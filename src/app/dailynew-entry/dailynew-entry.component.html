@@ -1,1 +1,86 @@
- 
+<div class="col-12 md:col-12 lg:col-12">
+    <div class="grid to-center">
+        <div class="col-11 md:col-10 lg:col-10 box-shadow">
+            <div #main class="col-12" style="border: 2px solid #673ab7;
+            border-radius: 5px;padding: 0;">
+                <div class="col-12 header">
+                    <span>Daily News Entry</span>
+                </div>
+                <div #outerdiv class="col-12">
+                    <div #innerdiv class="col-12">
+                        <div class="col-12"></div>
+                        <div class="grid to-center">
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="newsTitleOptions" [(ngModel)]="newsTitle"></p-dropdown>
+                                    <label for="float-input">News Title</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="priorityOptions" [(ngModel)]="priority"></p-dropdown>
+                                    <label for="float-input">Priority</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="file" pInputText [(ngModel)]="filename" />
+                                    <label for="float-input"></label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="grid to-center">
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="newsDetail" />
+                                    <!-- <textarea pInputTextarea [autoResize]="true"
+                                    [(ngModel)]="newsDetail"></textarea> -->
+                                    <label for="float-input">Detail</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="displayOptions" [(ngModel)]="display"></p-dropdown>
+                                    <label for="float-input">Display</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="locationOptions" [(ngModel)]="location"></p-dropdown>
+                                    <label for="float-input">Location</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="grid to-center">
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="districtOptions" [(ngModel)]="district"></p-dropdown>
+                                    <label for="float-input">District</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="stateOptions" [(ngModel)]="state"></p-dropdown>
+                                    <label for="float-input">State</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="countryOptions" [(ngModel)]="country"></p-dropdown>
+                                    <label for="float-input">Country</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 div-txt-align-ct">
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,53 @@
- login
+<div class="col-12 md:col-12 lg:col-12" style="padding: 6%">
+    <div class="grid to-center">
+        <div class="col-9 md:col-6 lg:col-6 box-shadow">
+            <div #main class="col-12" style="border: 2px solid #2f203c63;
+            border-radius: 5px;padding: 0;">
+                <div class="col-12 header">
+                    <span>MURASOLI ADMIN</span>
+                </div>
+                <div #outerdiv class="col-12">
+                    <div class="col-12"></div>
+                    <div class="to-center">User Login</div>
+                    <div #innerdiv class="col-12 md:col-12 lg:col-12">
+                        <div class="grid">
+                            <div class="col-2"></div>
+                            <div class="col-12 md:col-12 lg:col-10">
+                                <div class="grid">
+                                    <div class="col-12 md:col-2 lg:col-9">
+                                        <div class="p-inputgroup">
+                                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                                            <input type="text" pInputText placeholder="Username" [(ngModel)]="username"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 md:col-12 lg:col-12">
+                                        <div class="grid">
+                                            <div class="col-12 md:col-2 lg:col-9">
+                                                <div class="p-inputgroup">
+                                                    <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                                                    <input type="password" pInputText placeholder="Password"
+                                                        [(ngModel)]="password" required>
+                                                    <span class="p-inputgroup-addon" (click)="onShowPswd()">
+                                                        <i *ngIf="!showPswd" disabled class="pi pi-eye"
+                                                            aria-hidden="true"></i>
+                                                        <i *ngIf="showPswd" class="pi pi-eye-slash"
+                                                            aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 div-txt-align-ct">
+                                <button pButton type="button" icon="pi pi-fw pi-sign-in" label="Login"
+                                    (click)="onLogin()"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

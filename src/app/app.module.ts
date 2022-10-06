@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {ToastModule} from 'primeng/toast';
+import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -9,10 +9,9 @@ import { PanelModule } from 'primeng/panel';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
 import { AppRoutingModule } from './app-routing.module';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DailynewEntryComponent } from './dailynew-entry/dailynew-entry.component';
@@ -35,6 +34,7 @@ import { DailynewEntryComponent } from './dailynew-entry/dailynew-entry.componen
     DropdownModule,
     PanelMenuModule,
     PanelModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
