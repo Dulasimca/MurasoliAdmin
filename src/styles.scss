@@ -17,10 +17,20 @@ body {
 }
 
 .header {
-    background: #99598b;
+    background: #856b8a99;
     color: white; 
     text-align: center;
+    border-radius: 10px;
 }
+
+.user-icon {
+    border-radius: 70%;
+    width: 70px;
+    height: 60px;
+    margin: auto;
+    background: #856b8a;
+}
+ 
 ///primeng
 
 .p-dropdown {
@@ -43,6 +53,6 @@ body {
 }
 
 .p-inputgroup-addon {
-    background: #bbdbdd !important;
+    background: #e6e0e7 !important;
     color: #56696a !important;
 }
