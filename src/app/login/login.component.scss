@@ -1,0 +1,10 @@
+.tlk-circle {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    font-size: 18px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
