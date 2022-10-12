@@ -15,7 +15,7 @@ export class DailynewEntryComponent implements OnInit {
   location: any;
   priorityOptions: SelectItem[] = [];
   priority: any;
-  districtOptions:SelectItem[] =[];
+  districtOptions: SelectItem[] = [];
   district: any;
   stateOptions: SelectItem[] = [];
   state: any;
@@ -23,6 +23,8 @@ export class DailynewEntryComponent implements OnInit {
   country: any;
   displayOptions: SelectItem[] = [];
   display: any;
+  newsTamilTitle: any;
+  newsTamilDetail: any;
   constructor() { }
 
   ngOnInit(): void {

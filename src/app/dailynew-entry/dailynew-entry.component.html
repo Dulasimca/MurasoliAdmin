@@ -4,7 +4,7 @@
             <div #main class="col-12" style="border: 2px solid #673ab7;
             border-radius: 5px;padding: 0;">
                 <div class="col-12 header">
-                    <span>Daily News Entry</span>
+                    <span>தினசரி செய்தி பதிவு/Daily News Entry</span>
                 </div>
                 <div #outerdiv class="col-12">
                     <div #innerdiv class="col-12">
@@ -12,8 +12,14 @@
                         <div class="grid to-center">
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="newsTitleOptions" [(ngModel)]="newsTitle"></p-dropdown>
+                                    <input type="text" pInputText [(ngModel)]="newsTamilTitle" />
                                     <label for="float-input">செய்தி தலைப்பு</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="newsTitle" />
+                                    <label for="float-input">News Topic</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
@@ -34,10 +40,17 @@
                         <div class="grid to-center">
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input type="text" pInputText [(ngModel)]="newsDetail" />
-                                    <!-- <textarea pInputTextarea [autoResize]="true"
-                                    [(ngModel)]="newsDetail"></textarea> -->
-                                    <label for="float-input">விவரம்</label>
+                                    <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
+                                    <textarea pInputTextarea [autoResize]="true"
+                                        [(ngModel)]="newsTamilDetail"></textarea>
+                                    <label for="float-input">செய்தி விவரம்</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
+                                    <textarea pInputTextarea [autoResize]="true" [(ngModel)]="newsDetail"></textarea>
+                                    <label for="float-input">News Details</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
@@ -55,7 +68,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="grid to-center">
+                        <div class="grid">
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-dropdown [options]="districtOptions" [(ngModel)]="district"></p-dropdown>
