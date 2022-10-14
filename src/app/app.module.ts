@@ -11,16 +11,28 @@ import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DailynewEntryComponent } from './dailynew-entry/dailynew-entry.component';
+import { MainNewsEntryComponent } from './main-news-entry/main-news-entry.component';
+import { FlashNewsEntryComponent } from './flash-news-entry/flash-news-entry.component';
+import { HeaderComponent } from './header/header.component';
+import { UserMasterComponent } from './user-master/user-master.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DailynewEntryComponent
+    DailynewEntryComponent,
+    MainNewsEntryComponent,
+    FlashNewsEntryComponent,
+    HeaderComponent,
+    UserMasterComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +46,8 @@ import { DailynewEntryComponent } from './dailynew-entry/dailynew-entry.componen
     DropdownModule,
     PanelMenuModule,
     PanelModule,
-    InputTextareaModule
+    InputTextareaModule,
+    CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

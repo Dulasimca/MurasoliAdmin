@@ -1,0 +1,48 @@
+<div class="col-12 md:col-12 lg:col-12">
+    <div class="grid to-center">
+        <div class="col-11 md:col-10 lg:col-10 box-shadow">
+            <div #main class="col-12 form-border">
+                <div class="col-12 header">
+                    <span>தலைப்பு செய்தி பதிவு/Flash News Entry</span>
+                </div>
+                <div #outerdiv class="col-12">
+                    <div #innerdiv class="col-12">
+                        <div class="col-12"></div>
+                        <div class="grid to-center">
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="locationOptions" [(ngModel)]="location"></p-dropdown>
+                                    <label for="float-input">இடம்</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-calendar [(ngModel)]="date" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+                                    <label for="float-input">நிகழ்வு தேதி</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
+                                    <textarea pInputTextarea [autoResize]="true"
+                                        [(ngModel)]="newsTamilDetail"></textarea>
+                                    <label for="float-input">செய்தி விவரம்</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
+                                    <textarea pInputTextarea [autoResize]="true" [(ngModel)]="newsDetail"></textarea>
+                                    <label for="float-input">News Details</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 div-txt-align-ct">
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
  
+ 
 body {
     font-family:Georgia, 'Times New Roman', Times, serif
 }
@@ -17,10 +18,16 @@ body {
 }
 
 .header {
-    background: #856b8a99;
+    background: #bf0909;
     color: white; 
     text-align: center;
     border-radius: 10px;
+}
+.form-border {
+    border: 2px solid #181818b8;
+    border-radius: 5px;
+    padding: 0;
+
 }
 
 .user-icon {
@@ -28,10 +35,28 @@ body {
     width: 70px;
     height: 60px;
     margin: auto;
-    background: #856b8a;
+    background: #db0404;
+}
+
+//header
+.grid-center {
+    display: flex;
+    justify-content: center;
 }
  
 ///primeng
+
+.p-button {
+    background: #bf0909 !important;
+    border: 1px solid #272929e3 !important;
+    transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s;
+    border-radius: 15px ;
+}
+.p-button:enabled:hover {
+    background:#e32727 !important;
+    color: whitesmoke;
+    border-color: #272929e3 !important;
+}
 
 .p-dropdown {
     width: -webkit-fill-available !important;
@@ -43,16 +68,47 @@ body {
 }
 .p-float-label input.p-filled ~ label {
     // color: #08d508 !important;
-    color: #673AB7 !important;
+    color: #272929e3 !important;
  }
  .p-inputtext:enabled:hover {
-    border-color: rgb(119 17 203) !important;
+    border-color: #272929e3 !important;
 }
 .p-dropdown:not(.p-disabled):hover {
-    border-color: rgb(119 17 203) !important;
+    border-color: #272929e3 !important;
 }
 
 .p-inputgroup-addon {
     background: #e6e0e7 !important;
-    color: #56696a !important;
+    color: #141515 !important;
 }
+
+//dashboard
+.overview-box {
+    display: block;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 20px !important;
+    margin: 5px;
+}
+
+.view1 {
+    background-image: linear-gradient(90deg, #ffe085, #f4a22e);
+    border: 2px solid #ffe085 !important;
+}
+
+.dsh-tab-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: whitesmoke;
+    white-space: pre;
+}
+
+.dsh-tab-value {
+    font-size: 20px;
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
