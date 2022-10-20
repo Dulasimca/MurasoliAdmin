@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMasterComponent implements OnInit {
 
+  username: any;
+  email: any;
+  password: any;
+  selectedType: any;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSave() {
+    
   }
 
 }

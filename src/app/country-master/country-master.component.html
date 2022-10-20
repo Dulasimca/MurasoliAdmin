@@ -3,7 +3,7 @@
         <div class="col-11 md:col-10 lg:col-10 box-shadow">
             <div #main class="col-12 form-border">
                 <div class="col-12 header">
-                    <span>User Master</span>
+                    <span>Country Master Entry</span>
                 </div>
                 <div #outerdiv class="col-12">
                     <div #innerdiv class="col-12">
@@ -11,20 +11,8 @@
                         <div class="grid to-center">
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input type="text" pInputText [(ngModel)]="username" />
-                                    <label for="float-input">Username</label>
-                                </span>
-                            </div>
-                            <div class="col-12 md:col-2 lg:col-3">
-                                <span class="p-float-label">
-                                    <input type="email" pInputText [(ngModel)]="email"/>
-                                    <label for="float-input">User Email</label>
-                                </span>
-                            </div>
-                            <div class="col-12 md:col-2 lg:col-3">
-                                <span class="p-float-label">
-                                    <input type="text" pInputText [(ngModel)]="password"/>
-                                    <label for="float-input">Password</label>
+                                    <input type="text" pInputText [(ngModel)]="countryName" />
+                                    <label for="float-input">Country Name</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3" style="padding: 15px">
@@ -35,10 +23,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 div-txt-align-ct">
-                        <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
-                    </div>
+                </div>
+                <div class="col-12 div-txt-align-ct">
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
                 </div>
             </div>
         </div>
     </div>
+</div>

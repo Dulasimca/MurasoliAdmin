@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 
 import { AppComponent } from './app.component';
@@ -22,6 +23,10 @@ import { FlashNewsEntryComponent } from './flash-news-entry/flash-news-entry.com
 import { HeaderComponent } from './header/header.component';
 import { UserMasterComponent } from './user-master/user-master.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DistrictMasterEntryComponent } from './district-master-entry/district-master-entry.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StateMasterEntryComponent } from './state-master-entry/state-master-entry.component';
+import { CountryMasterComponent } from './country-master/country-master.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     UserMasterComponent,
     DashboardComponent,
+    DistrictMasterEntryComponent,
+    StateMasterEntryComponent,
+    CountryMasterComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +56,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PanelModule,
     InputTextareaModule,
     CalendarModule,
+    RadioButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
