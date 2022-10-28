@@ -90,12 +90,16 @@ export class FlashNewsEntryComponent implements OnInit {
 
   onEdit(rowData: any) {
       this.Id = rowData.slno,
-      this.date = rowData.incidentdate,
+      this.date = new Date ( rowData.incidentdate),
       this.location = rowData.location,
       this.newsDetail = rowData.newsdetails
   }
 
   Clear() {
+  this.location = null;
+  this.newsDetail = null;
+  this.Id = 0;
+  this.date = null;
 
   }
 }

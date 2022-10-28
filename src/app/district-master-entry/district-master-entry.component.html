@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-12 div-txt-align-ct">
                     <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()" [disabled]="(!selectedType || !districtName)"></button>
-                    <button pButton type="button" icon="pi pi-fw pi-eye" label="View" (click)="onView()"></button>
+                    <!-- <button pButton type="button" icon="pi pi-fw pi-eye" label="View" (click)="onView()"></button> -->
                 </div>
                 <p-table [value]="Districtdata" styleClass="p-datatable-gridlines" [paginator]="true"
                                             [rows]="40" [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll">

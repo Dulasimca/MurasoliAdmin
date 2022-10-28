@@ -21,6 +21,7 @@ export class DistrictMasterEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.districtId = 0;
+    this.onView();
   }
 
   onSave() {
@@ -82,6 +83,9 @@ export class DistrictMasterEntryComponent implements OnInit {
     this.restApiService.get(PathConstants.DistrictMaster_Get).subscribe(res => {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
+          res.Table.forEach((i: any) => {
+            i.flag = (i.flag === true) ? 'Active' : 'Inactive'
+           })
           this.Districtdata = res.Table;
         } else {
           this.Districtdata = [];

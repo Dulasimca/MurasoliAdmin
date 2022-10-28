@@ -84,6 +84,9 @@ export class StateMasterEntryComponent implements OnInit {
     this.restApiService.get(PathConstants.StateMaster_Get).subscribe(res => {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
+          res.Table.forEach((i: any) => {
+            i.flag = (i.flag === true) ? 'Active' : 'Inactive'
+           })
           this.Statedata = res.Table;
         } else {
           this.Statedata = [];

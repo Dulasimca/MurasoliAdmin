@@ -17,7 +17,7 @@ import {TableModule} from 'primeng/table';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MenuModule} from 'primeng/menu';
-
+import { DialogModule } from 'primeng/dialog';
 
 
 import { AppComponent } from './app.component';
@@ -72,6 +72,7 @@ import { DatePipe } from '@angular/common';
     MessageModule,
     MessagesModule,
     MenuModule,
+    DialogModule
 
   ],
   providers: [MessageService, RestAPIService, DatePipe],

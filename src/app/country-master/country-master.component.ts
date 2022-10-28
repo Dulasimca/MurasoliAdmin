@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { ResponseMessage } from '../Common-Modules/messages';
 import { PathConstants } from '../Common-Modules/Pathconstants';
 import { RestAPIService } from '../Services/restApi.service';
@@ -15,9 +16,8 @@ export class CountryMasterComponent implements OnInit {
   selectedType: any;
   countryId: any;
   Countrydata: any[] = [];
-  messageService: any;
 
-  constructor(private restApiService: RestAPIService) { }
+  constructor(private restApiService: RestAPIService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.onView();
@@ -41,7 +41,7 @@ export class CountryMasterComponent implements OnInit {
             summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.UpdateMsg
           });
           this.onView();
-          this.clear();
+          this.Clear();
         }
       })
     }
@@ -55,7 +55,7 @@ export class CountryMasterComponent implements OnInit {
       this.restApiService.post(PathConstants.CountryMaster_Post, params).subscribe((res: any) => {
         if(res) {
           this.onView();
-          this.clear();
+          this.Clear();
           this.messageService.clear();
           this.messageService.add({
             key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
@@ -88,12 +88,15 @@ export class CountryMasterComponent implements OnInit {
 
   onView() {
     this.restApiService.get(PathConstants.CountryMaster_Get).subscribe(res => {
+      res.Table.forEach((i: any) => {
+        i.flag = (i.flag === true) ? 'Active' : 'Inactive'
+        console.log(i.flag)
+       })
       this.Countrydata = res.Table;
     })
   }
- clear() {
+ Clear() {
   this.countryName = null;
-  this.selectedType = null;
 
  }
    

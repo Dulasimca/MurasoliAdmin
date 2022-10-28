@@ -1,5 +1,7 @@
  
- 
+ @import url("../node_modules/primeicons/primeicons.css");
+ @import url("../node_modules/primeng/resources/themes/saga-orange/theme.css");
+ @import url("../node_modules/primeng/resources/primeng.min.css");
 body {
     font-family:Georgia, 'Times New Roman', Times, serif
 }
@@ -39,11 +41,19 @@ body {
     background:  #4f4e4e;
 }
 
+.main-header {
+text-align: -webkit-center;border: 2px solid #0d0d0d;
+border-radius: 5px;
+padding: 0;
+background:rgb(0 0 0)
+}
+
 //header
 .grid-center {
     display: flex;
     justify-content: center;
 }
+
  
 ///primeng
 
@@ -85,7 +95,11 @@ background: #1b9366 !important;
     background: #e6e0e7 !important;
     color: #141515 !important;
 }
-
+// .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+//     border-color: #4f4e4e !important;
+//     background: #4f4e4e !important;
+//     color: #ffffff;
+// }
 
 //dashboard
 .overview-box {
@@ -165,7 +179,7 @@ background: #ffec26fa;
     // margin-top: 3.5rem;
     position: absolute;
     overflow-y: auto;
-    background-color: #025f56;
+    background-color: #4f4e4e;
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 6%);
     padding: 0 !important;
     overflow-x: hidden;
@@ -205,4 +219,14 @@ background: #ffec26fa;
     justify-content: center;
     color: #3c4962;
 }
+// :host ::ng-deep {
+// .p-toast-message-custom {
+//     background-color: #8A427A;
+//     border: solid #8A427A;
+//     border-width: 0 0 0 6px;
+//     color: #2c1e30;
+//     .p-toast-icon-close {
+//         color: #2c1e30;
+//     }
+// }
 

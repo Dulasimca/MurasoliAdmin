@@ -9,7 +9,7 @@
                     <span>User Master</span>
                 </div>
                 <div #outerdiv class="col-12">
-                    <p-toast position="top-center" key="t-msg"></p-toast>
+                    <p-toast position="center" key="t-msg"></p-toast>
                     <div #innerdiv class="col-12">
                         <div class="col-12"></div>
                         <div class="grid to-center">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="col-12 div-txt-align-ct">
-                        <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
+                        <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()" [disabled]="(!selectedType || !username || !email || !password)"></button>
                     </div>
                     <p-table #usermaster [value]="userdata" styleClass="p-datatable-gridlines" [paginator]="true"
                         [rows]="40" [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll" [filterDelay]="0"
@@ -127,7 +127,7 @@
                                     <span class="p-column-title">
                                         Edit/Update :
                                     </span>
-                                    <span><button icon="pi pi-pencil" pButton type="button" pTooltip="Tap to edit"
+                                    <span><button icon="pi pi-pencil" pButton type="button" pTooltip="Tap to edit"  
                                             (click)="onEdit(rowData)">
                                         </button></span>
                                 </td>

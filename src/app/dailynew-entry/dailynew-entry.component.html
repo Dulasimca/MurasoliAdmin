@@ -8,9 +8,10 @@
                 <div class="col-12 header">
                     <span>தினசரி செய்தி பதிவு/Daily News Entry</span>
                 </div>
+                <p-toast position="top-center" key="t-msg"></p-toast>
+
                 <!-- <form  #f="ngForm" name="dailynewsform">  -->
                 <div #outerdiv class="col-12">
-                    <p-toast position="bottom-center" key="t-msg"></p-toast>
                     <div #innerdiv class="col-12">
                         <div class="col-12"></div>
                         <div class="grid to-center">
@@ -28,13 +29,13 @@
                             </div> -->
                             <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="priorityOptions" [(ngModel)]="priority"></p-dropdown>
+                                    <p-dropdown [options]="priorityOptions" [(ngModel)]="priority" [autoDisplayFirst]="false"></p-dropdown>
                                     <label for="float-input">Priority Level</label>
                                 </span>
                             </div>
                             <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input pInputText  type="file"   pInputText (change)="uploadFile($event)"
+                                    <input pInputText  type="file" (change)="uploadFile($event)"
                                         accept=".png" required />
                                     <!-- <input type="file" pInputText [(ngModel)]="filename" /> -->
                                 </span>
@@ -58,7 +59,7 @@
                             </div> -->
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="displayOptions" [(ngModel)]="display"></p-dropdown>
+                                    <p-dropdown [options]="displayOptions" [(ngModel)]="display" [autoDisplayFirst]="false"></p-dropdown>
                                     <label for="float-input">Display Side</label>
                                 </span>
                             </div>
@@ -74,19 +75,19 @@
                         <div class="grid" style="margin-left: 8%">
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="districtOptions" [(ngModel)]="district" (onClick)="onSelect('D')"></p-dropdown>
+                                    <p-dropdown [options]="districtOptions" [(ngModel)]="district" (onClick)="onSelect('D')" [autoDisplayFirst]="false"></p-dropdown>
                                     <label for="float-input">District</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="stateOptions" [(ngModel)]="state" (onClick)="onSelect('S')"></p-dropdown>
+                                    <p-dropdown [options]="stateOptions" [(ngModel)]="state" (onClick)="onSelect('S')" [autoDisplayFirst]="false"></p-dropdown>
                                     <label for="float-input">State</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="countryOptions" [(ngModel)]="country" (onClick)="onSelect('C')"></p-dropdown>
+                                    <p-dropdown [options]="countryOptions" [(ngModel)]="country" (onClick)="onSelect('C')" [autoDisplayFirst]="false"></p-dropdown>
                                     <label for="float-input">Country</label>
                                 </span>
                             </div>
@@ -95,9 +96,10 @@
                 </div>
                 <!-- </form> -->
                 <div class="col-12 div-txt-align-ct">
-                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>&nbsp;
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="View" (click)="onView()"></button>
                 </div>
-
+                <div *ngIf="showTable"> 
                 <p-table [value]="dailyNewsdata" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="40"
                     [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll">
                     <ng-template pTemplate="header">
@@ -194,7 +196,7 @@
                                 <span class="p-column-title">
                                    Image :
                                 </span>
-                                <span style="text-align: end;">
+                                <span (click)="showImage(rowData.url)" style="text-align: end;">
                                     <img [src]="rowData.url" [alt]="rowData.image" width="60px" height="70px"
                                     class="p-shadow-4" />
                                 </span>
@@ -209,6 +211,11 @@
                         </tr>
                     </ng-template>
                 </p-table>
+            </div>
+                <p-dialog #dialog header="Uploaded News Image" [(visible)]="showDialog" [modal]="showDialog" [maximizable]="true"
+                [style]="{width: '60vw', height: '60vw'}">
+                <img alt="News Image" [src]="NewsImage" style="vertical-align: middle" />
+            </p-dialog>
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-12 div-txt-align-ct">
-                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()" [disabled]="(!selectedType || !stateName)"></button>
                 </div>
                 <p-table [value]="Statedata" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="40"
                     [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll">
@@ -80,7 +80,7 @@
                             <td>
                                 <span class="p-column-title">
                                     Edit/Update :
-                                </span><span><button icon="pi pi-pencil" pButton type="button" pTooltip="Tap to edit"
+                                </span><span><button icon="pi pi-pencil" pButton type="button"   pTooltip="Tap to edit"
                                         (click)="onEdit(rowData)">
                                     </button></span>
                             </td>

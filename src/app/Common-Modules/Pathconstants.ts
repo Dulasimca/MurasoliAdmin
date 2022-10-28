@@ -15,8 +15,8 @@ export class PathConstants {
     public static readonly DailyNewsEntry_Get = 'DailyNewsEntry/GetDailyNewsEntry';
     public static readonly UpdateDailyNewsEntry_Update ='UpdateDailyNewsEntry/UpdateDailyNewsEntry';
     public static readonly FileUpload_Post = 'FileUpload';
-    public static readonly MainNewsEntryr_Post = 'MainNewsEntry/GetStateMaster';
-    public static readonly MainNewsEntry_Get = 'MainNewsEntry/GetStateMaster';
+    public static readonly MainNewsEntry_Post = 'MainNewsEntry/AddMainNewsEntry';
+    public static readonly MainNewsEntry_Get = 'MainNewsEntry/GetMainNewsEntry';
     public static readonly MainNewsEntry_Update = 'UpdateMainNewsEntry/UpdateMainNewsEntry';
     public static readonly FlashNewsEntry_Post = 'FlashNewsEntry/AddFlashNewsEntry';
     public static readonly FlashNewsEntry_Get = 'FlashNewsEntry/GetFlashNewsEntry';

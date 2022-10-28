@@ -48,7 +48,7 @@ export class UserMasterComponent implements OnInit {
       'emailid': this.email,
       'password': this.password,
       'roleid': 1,
-      'Flag': true
+      'Flag':  (this.selectedType == 1) ? true : false
     }
     this.restapiService.post(PathConstants.Users_Post, params).subscribe(res => {
       if (res) {
@@ -87,7 +87,27 @@ export class UserMasterComponent implements OnInit {
 
   onView() {
     this.restapiService.get(PathConstants.Users_Get).subscribe(res => {
-      this.userdata = res.Table;
+      if(res !== null && res !== undefined) {
+        if(res.Table.length !== 0 ) {
+          res.Table.forEach((i: any) => {
+           i.flag = (i.flag === true) ? 'Active' : 'Inactive'
+          })
+          this.userdata = res.Table;
+        } else{
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
+            summary: ResponseMessage.SUMMARY_WARNING, detail: ResponseMessage.NoRecordMessage
+          })
+        }
+      }
     })
+  }
+
+  onClear() {
+    this.username = null;
+    this.email = null;
+    this.password = null;
+    
   }
 }
