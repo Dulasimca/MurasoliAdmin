@@ -1,0 +1,60 @@
+<div *ngIf="!hide" class="col-10 md:col-3 lg:col-2 menu-sidebar">
+    <div style="margin-top: 2rem;">
+        <div style="margin-bottom: 0.7rem;" [routerLink]="['/dashboard']">
+            <span class="menu-item-subtitle">
+                <i class="pi pi-fw pi-home"></i>
+                 Home </span>
+            </div>
+            <div style="margin-bottom: 0.7rem; " [routerLink]="['/daily-news-entry']" >
+                <span class="menu-item-subtitle">
+                    <i class="pi pi-fw pi-book"></i>
+                     Daily News Entry </span>
+                </div>
+            <div style="margin-bottom: 0.7rem;" [routerLink]="['/flash-news-entry']">
+                <span class="menu-item-subtitle">
+                    <i class="pi pi-fw pi-bolt"></i>
+                     Flash News Entry </span>
+                </div>
+                
+                    <div style="margin-bottom: 0.7rem;" [routerLink]="['/main-news-entry']" >
+                        <span class="menu-item-subtitle">
+                            <i class="pi pi-fw pi-calendar"></i>
+                             Main News Entry </span>
+                        </div>
+                        <div style="margin-bottom: 0.7rem;"  [routerLink]="['/user-master']">
+                            <span class="menu-item-subtitle">
+                                <i class="pi pi-fw pi-id-card"></i>
+                                 User Master </span>
+                            </div>
+                            <div style="margin-bottom: 0.7rem;"  [routerLink]="['/district-master']">
+                                <span class="menu-item-subtitle">
+                                    <i class="pi pi-fw pi-pencil"></i>
+                                     District Master </span>
+                                </div>
+                                <div style="margin-bottom: 0.7rem;"  [routerLink]="['/country-master']">
+                                    <span class="menu-item-subtitle">
+                                        <i class="pi pi-fw pi-pencil"></i>
+                                         Country Master </span>
+                                    </div>
+                                    <div style="margin-bottom: 0.7rem;"  [routerLink]="['/state-master']">
+                                        <span class="menu-item-subtitle">
+                                            <i class="pi pi-fw pi-pencil"></i>
+                                             State Master </span>
+                                        </div>
+        <!-- <div *ngFor="let i of titles" class="col-12 md:col-12 lg:col-12">
+            <div>
+               <span class="menu-item-title"> {{i.title}} </span>
+            <div class="menu-item-subtitle" *ngFor="let j of items">
+                <div *ngIf="(i.id == j.id)"> 
+                    <div [routerLink]="j.routerLink">
+                <div *ngIf="(i.id == j.id)">    
+                <i class="{{j.icon}}"></i>
+                <span>{{j.label}}</span>
+            </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div> -->
+    </div>
+</div>

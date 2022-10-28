@@ -1,6 +1,9 @@
+<div  class="col-10 md:col-3 lg:col-2 no-padding">
+    <app-menu></app-menu>
+  </div>
 <div class="col-12 md:col-12 lg:col-12">
     <div class="grid to-center">
-        <div class="col-11 md:col-10 lg:col-10 box-shadow">
+        <div class="col-11 md:col-10 lg:col-8 box-shadow">
             <div #main class="col-12 form-border">
                 <div class="col-12 header">
                     <span>முக்கிய செய்தி பதிவு/Main News Entry</span>
@@ -9,25 +12,25 @@
                     <div #innerdiv class="col-12">
                         <div class="col-12"></div>
                         <div class="grid to-center">
-                            <div class="col-12 md:col-2 lg:col-3">
+                            <div class="col-10 md:col-2 lg:col-4">
                                 <span class="p-float-label">
                                     <input type="text" pInputText [(ngModel)]="newsTamilTitle" />
-                                    <label for="float-input">செய்தி தலைப்பு</label>
-                                </span>
-                            </div>
-                            <div class="col-12 md:col-2 lg:col-3">
-                                <span class="p-float-label">
-                                    <input type="text" pInputText [(ngModel)]="newsTitle" />
                                     <label for="float-input">News Topic</label>
                                 </span>
                             </div>
-                            <div class="col-12 md:col-2 lg:col-3">
+                            <!-- <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="newsTitle" />
+                                    <label for="float-input">Translation</label>
+                                </span>
+                            </div> -->
+                            <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-dropdown [options]="priorityOptions" [(ngModel)]="priority"></p-dropdown>
-                                    <label for="float-input">முன்னுரிமை நிலை</label>
+                                    <label for="float-input">Priority Level</label>
                                 </span>
                             </div>
-                            <div class="col-12 md:col-2 lg:col-3">
+                            <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input type="file" pInputText [(ngModel)]="filename" />
                                     <label for="float-input"></label>
@@ -37,15 +40,14 @@
                     </div>
                     <div class="col-12">
                         <div class="grid to-center">
-                            <div class="col-12 md:col-2 lg:col-3">
+                            <!-- <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
                                     <textarea pInputTextarea [autoResize]="true"
                                         [(ngModel)]="newsTamilDetail"></textarea>
                                     <label for="float-input">செய்தி விவரம்</label>
                                 </span>
-                            </div>
-                            <div class="col-12 md:col-2 lg:col-3">
+                            </div> -->
+                            <div class="col-12 md:col-2 lg:col-4">
                                 <span class="p-float-label">
                                     <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
                                     <textarea pInputTextarea [autoResize]="true" [(ngModel)]="newsDetail"></textarea>
@@ -55,35 +57,35 @@
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-dropdown [options]="displayOptions" [(ngModel)]="display"></p-dropdown>
-                                    <label for="float-input">காட்சி பக்கம்</label>
+                                    <label for="float-input">Display side</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="locationOptions" [(ngModel)]="location"></p-dropdown>
-                                    <label for="float-input">இடம்</label>
+                                    <input type="text" pInputText [(ngModel)]="location" />
+                                    <label for="float-input">Location</label>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="grid">
+                        <div class="grid" style="margin-left: 7.8%">
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="districtOptions" [(ngModel)]="district"></p-dropdown>
-                                    <label for="float-input">மாவட்டம்</label>
+                                    <p-dropdown [options]="districtOptions" [(ngModel)]="district" (onClick)="onSelect('D')"></p-dropdown>
+                                    <label for="float-input">District</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="stateOptions" [(ngModel)]="state"></p-dropdown>
-                                    <label for="float-input">மாநிலம்</label>
+                                    <p-dropdown [options]="stateOptions" [(ngModel)]="state" (onClick)="onSelect('S')"></p-dropdown>
+                                    <label for="float-input">State</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="countryOptions" [(ngModel)]="country"></p-dropdown>
-                                    <label for="float-input">நாடு</label>
+                                    <p-dropdown [options]="countryOptions" [(ngModel)]="country" (onClick)="onSelect('C')"></p-dropdown>
+                                    <label for="float-input">Country</label>
                                 </span>
                             </div>
                         </div>

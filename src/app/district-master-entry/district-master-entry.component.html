@@ -1,11 +1,15 @@
+<div  class="col-10 md:col-3 lg:col-2 no-padding">
+    <app-menu></app-menu>
+  </div>
 <div class="col-12 md:col-12 lg:col-12">
     <div class="grid to-center">
-        <div class="col-11 md:col-10 lg:col-10 box-shadow">
+        <div class="col-11 md:col-10 lg:col-8 box-shadow">
             <div #main class="col-12 form-border">
                 <div class="col-12 header">
                     <span>District Master Entry</span>
                 </div>
                 <div #outerdiv class="col-12">
+                    <p-toast position="bottom-center" key="t-msg"></p-toast>
                     <div #innerdiv class="col-12">
                         <div class="col-12"></div>
                         <div class="grid to-center">
@@ -13,7 +17,7 @@
                                 <span class="p-float-label">
                                     <input type="text" pInputText [(ngModel)]="districtName" />
                                     <label for="float-input">District Name</label>
-                                </span>
+                                </span> 
                             </div>
                             <div class="col-12 md:col-2 lg:col-3" style="padding: 15px">
                                 <p-radioButton name="Flag" label="Active" value=1 [(ngModel)]="selectedType" required>
@@ -25,8 +29,64 @@
                     </div>
                 </div>
                 <div class="col-12 div-txt-align-ct">
-                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"></button>
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()" [disabled]="(!selectedType || !districtName)"></button>
+                    <button pButton type="button" icon="pi pi-fw pi-eye" label="View" (click)="onView()"></button>
                 </div>
+                <p-table [value]="Districtdata" styleClass="p-datatable-gridlines" [paginator]="true"
+                                            [rows]="40" [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th style="width: 50px;">S.No</th>
+                                                    <th>District Code</th>
+                                                    <th>District</th>
+                                                    <th>Active/Inactive</th>
+                                                    <th>Edit/Update</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                                                <tr class="tr-border">
+                                                    <td class="td-border">
+                                                        <span class="p-column-title">
+                                                            S.No :
+                                                        </span>
+                                                        <span style="text-align: end;">
+                                                            {{rowIndex+1}}
+                                                        </span>
+                                                    </td>
+                                                    
+                                                    <td class="td-border">
+                                                        <span class="p-column-title">
+                                                            District Code :
+                                                        </span>
+                                                        <span style="text-align: end;">
+                                                            {{rowData.districtid}}
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-border">
+                                                        <span class="p-column-title">
+                                                         District Name :
+                                                        </span>
+                                                        <span style="text-align: end;">
+                                                            {{rowData.districtname}}
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-border">
+                                                        <span class="p-column-title">
+                                                            Active/Inactive :
+                                                        </span>
+                                                        <span style="text-align: end;">
+                                                            {{rowData.flag}}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="p-column-title">
+                                                            Edit/Update :
+                                                        </span><span><button icon="pi pi-pencil" pButton type="button"
+                                                            pTooltip="Tap to edit" (click)="onEdit(rowData)">
+                                                        </button></span></td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
             </div>
         </div>
     </div>

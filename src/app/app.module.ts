@@ -13,6 +13,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import {TableModule} from 'primeng/table';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {MenuModule} from 'primeng/menu';
+
 
 
 import { AppComponent } from './app.component';
@@ -27,6 +32,10 @@ import { DistrictMasterEntryComponent } from './district-master-entry/district-m
 import { HttpClientModule } from '@angular/common/http';
 import { StateMasterEntryComponent } from './state-master-entry/state-master-entry.component';
 import { CountryMasterComponent } from './country-master/country-master.component';
+import { MessageService } from 'primeng/api';
+import { RestAPIService } from './Services/restApi.service';
+import { MenuComponent } from './menu/menu.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,6 +50,7 @@ import { CountryMasterComponent } from './country-master/country-master.componen
     DistrictMasterEntryComponent,
     StateMasterEntryComponent,
     CountryMasterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +67,14 @@ import { CountryMasterComponent } from './country-master/country-master.componen
     InputTextareaModule,
     CalendarModule,
     RadioButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule,
+    MessageModule,
+    MessagesModule,
+    MenuModule,
+
   ],
-  providers: [],
+  providers: [MessageService, RestAPIService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

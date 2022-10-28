@@ -2,7 +2,8 @@
     <div class="col-12 md:col-12 lg:col-12" style="background: white !important;  border: 2px solid #18181826;
     border-radius: 5px;
     padding: 0;">
-        <app-header></app-header>
+       <app-header [hide]="hideContent" (openMenu)="toggleMenu($event)"></app-header>
+       
         <router-outlet></router-outlet>
     </div>
     </div>

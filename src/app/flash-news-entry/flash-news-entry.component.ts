@@ -1,5 +1,10 @@
+import { DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { SelectItem } from 'primeng/api';
+import { MessageService, SelectItem } from 'primeng/api';
+import { ResponseMessage } from '../Common-Modules/messages';
+import { PathConstants } from '../Common-Modules/Pathconstants';
+import { RestAPIService } from '../Services/restApi.service';
 
 @Component({
   selector: 'app-flash-news-entry',
@@ -13,13 +18,84 @@ export class FlashNewsEntryComponent implements OnInit {
   newsTamilDetail: any;
   newsDetail: any;
   date: any;
+  Id: number = 0;
+  flashNewsData: any[] = [];
 
-  constructor() { }
+  constructor(private restApiService: RestAPIService, private messageService: MessageService, private _datePipe: DatePipe) { }
 
   ngOnInit(): void {
   }
 
   onSave() {
+    if (this.Id === 0) {
+      const params = {
+        'slno': this.Id,
+        'location': this.location,
+        'incidentdate': this.date,
+        'newsdetails': this.newsDetail,
+        'flag': true
+      }
+      this.restApiService.post(PathConstants.FlashNewsEntry_Post, params).subscribe(res => {
+        if (res) {
+          this.onView();
+          this.Clear();
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
+            summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.SuccessMessage
+          });
+        } else {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+          });
+        }
+      }, (err: HttpErrorResponse) => {
+        if (err.status === 0 || err.status === 400) {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+          })
+        }
+      })
+    } else {
+      const params = {
+        'u_slno': this.Id,
+        'u_location': this.location,
+        'u_incidentdate': this._datePipe.transform(this.date, 'MM-dd-yyyy'),
+        'u_newsdetails': this.newsDetail,
+        'u_flag': true
+      }
+      this.restApiService.post(PathConstants.FlashNewsEntry_Update, params).subscribe(res => {
+        if (res) {
+          this.onView();
+          this.Clear();
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
+            summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.UpdateMsg
+          });
+        }
+      })
+    }
+  }
+
+  onView() {
+    this.restApiService.get(PathConstants.FlashNewsEntry_Get).subscribe(res => {
+      this.flashNewsData = res.Table;
+    })
+  }
+
+  onEdit(rowData: any) {
+      this.Id = rowData.slno,
+      this.date = rowData.incidentdate,
+      this.location = rowData.location,
+      this.newsDetail = rowData.newsdetails
+  }
+
+  Clear() {
 
   }
 }

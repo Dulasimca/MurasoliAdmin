@@ -22,6 +22,7 @@ body {
     color: white; 
     text-align: center;
     border-radius: 10px;
+    // #4f4e4e
 }
 .form-border {
     border: 2px solid #181818b8;
@@ -35,7 +36,7 @@ body {
     width: 70px;
     height: 60px;
     margin: auto;
-    background: #db0404;
+    background:  #4f4e4e;
 }
 
 //header
@@ -58,6 +59,9 @@ body {
     border-color: #272929e3 !important;
 }
 
+.p-button :disabled {
+background: #1b9366 !important;
+}
 .p-dropdown {
     width: -webkit-fill-available !important;
 }
@@ -81,6 +85,7 @@ body {
     background: #e6e0e7 !important;
     color: #141515 !important;
 }
+
 
 //dashboard
 .overview-box {
@@ -154,3 +159,50 @@ background: #ffec26fa;
  .colour7 {
     background: #95f6ff;
  }
+
+
+ .menu-sidebar {
+    // margin-top: 3.5rem;
+    position: absolute;
+    overflow-y: auto;
+    background-color: #025f56;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 6%);
+    padding: 0 !important;
+    overflow-x: hidden;
+    height: -webkit-fill-available !important;
+    transition: transform 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+    z-index: 5;
+    margin-left: -8px;
+    margin-top: -5px;
+    border: 3px solid rgb(118 69 69 / 72%);
+    font-family: 'primeicons';
+    border-radius: 5px;
+    
+}
+
+.menu-item-title {
+    color: #CDD2DB;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
+
+.menu-item-subtitle {
+    color: #CDD2DB;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.menu-bars {
+    border-radius: 50%;
+    background: #f3f9e7;
+    width: 35px !important;
+    height: 35px !important;
+    display: flex;
+    justify-content: center;
+    color: #3c4962;
+}
+

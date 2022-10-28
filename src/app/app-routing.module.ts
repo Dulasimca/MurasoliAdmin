@@ -7,11 +7,12 @@ import { DistrictMasterEntryComponent } from './district-master-entry/district-m
 import { FlashNewsEntryComponent } from './flash-news-entry/flash-news-entry.component';
 import { LoginComponent } from './login/login.component';
 import { MainNewsEntryComponent } from './main-news-entry/main-news-entry.component';
+import { MenuComponent } from './menu/menu.component';
 import { StateMasterEntryComponent } from './state-master-entry/state-master-entry.component';
 import { UserMasterComponent } from './user-master/user-master.component';
 
 const routes: Routes = [
-  { path: '',   redirectTo: '/login-page', pathMatch: 'full' },
+  { path:'',   redirectTo:'/login-page', pathMatch:'full' },
   {path: 'login-page', component:LoginComponent},
   {path: 'daily-news-entry', component:DailynewEntryComponent},
   {path: 'main-news-entry', component:MainNewsEntryComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'dashboard', component:DashboardComponent},
   {path: 'district-master', component:DistrictMasterEntryComponent},
   {path: 'state-master', component:StateMasterEntryComponent},
-  {path: 'country-master', component:CountryMasterComponent}
+  {path: 'country-master', component:CountryMasterComponent},
+  {path: 'menu', component:MenuComponent}
 
 ];
 
