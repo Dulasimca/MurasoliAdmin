@@ -34,7 +34,7 @@ export class CountryMasterComponent implements OnInit {
         'flag': (this.selectedType == 1) ? true : false
       }
       this.restApiService.post(PathConstants.UpdateCountryMaster_Update, values).subscribe(res => {
-        if(res) {
+        if (res) {
           this.messageService.clear();
           this.messageService.add({
             key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
@@ -53,7 +53,7 @@ export class CountryMasterComponent implements OnInit {
         'flag': (this.selectedType == 1) ? true : false
       }
       this.restApiService.post(PathConstants.CountryMaster_Post, params).subscribe((res: any) => {
-        if(res) {
+        if (res) {
           this.onView();
           this.Clear();
           this.messageService.clear();
@@ -77,13 +77,14 @@ export class CountryMasterComponent implements OnInit {
           })
         }
       })
-        }
+    }
   }
 
   onEdit(rowData: any) {
     this.countryId = rowData.countrycode,
       this.countryName = rowData.countryname,
-      this.selectedType = rowData.flag
+      this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+
   }
 
   onView() {
@@ -91,15 +92,15 @@ export class CountryMasterComponent implements OnInit {
       res.Table.forEach((i: any) => {
         i.flag = (i.flag === true) ? 'Active' : 'Inactive'
         console.log(i.flag)
-       })
+      })
       this.Countrydata = res.Table;
     })
   }
- Clear() {
-  this.countryName = null;
+  Clear() {
+    this.countryName = null;
 
- }
-   
+  }
+
 
 
 }

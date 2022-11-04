@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
   loginData: any[] = [];
 
 
-  constructor(private route: Router, private restApiService: RestAPIService, private messageService: MessageService) { }
+  constructor(private route: Router, private restApiService: RestAPIService, private messageService: MessageService) { 
+
+  }
 
   ngOnInit(): void {
     this.restApiService.get(PathConstants.Users_Get).subscribe(res => {
@@ -28,13 +30,23 @@ export class LoginComponent implements OnInit {
   }
 
   onShowPswd() {
-
+    console.log('1')
+    var inputValue = (<HTMLInputElement>document.getElementById('pswd'));
+    if (inputValue.type === 'password') {
+      inputValue.type = 'text';
+    console.log('2')
+      this.showPswd = !this.showPswd;
+    } else {
+      this.showPswd = !this.showPswd;
+      inputValue.type = 'password';
+    console.log('3')
+    }
   }
 
   onLogin() {
   this.loginData.forEach((i:any) => {
     if(
-    i.emailid === this.username
+   ( i.username === this.username && i.password === this.password)
     ) {
    this.route.navigate(['/dashboard'])
     } else {
@@ -47,6 +59,19 @@ export class LoginComponent implements OnInit {
     }
     
   })
+  this.login();
 }
+
+login(){
+  if (this.username !== '' && this.password !== '' ) { 
+    localStorage.setItem('UserInfo', JSON.stringify(this.username));
+    console.log('q',this.username)
+    const user = localStorage.getItem('UserInfo');
+
+    console.log('u',user)
+
+  }
+}
+
 }
 

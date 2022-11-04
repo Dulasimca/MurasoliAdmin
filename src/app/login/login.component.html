@@ -1,20 +1,18 @@
 <div class="col-12 md:col-12 lg:col-12" style="padding: 6%; ">
-    <div class="grid to-center">
-
-        <div class="col-9 md:col-6 lg:col-6 box-shadow"
+    <div class="grid">
+        <div class="col-4"></div>
+        <div class="col-12 md:col-12 lg:col-7 box-shadow no-pad"
             style=" border-radius: 100px !important; background: linear-gradient(45deg,#101010, transparent)">
             <!-- <div #main class="col-12" style="border: 2px solid #2f203c63; -->
             <!-- border-radius: 5px;padding: 0;  border-radius: 40px !important"> -->
             <div class="to-center user-icon"><i class="pi pi-user" style="font-size: xxx-large;
                 color: whitesmoke;"></i></div>
-
             <div class="col-12" style="background:  #4f4e4e;  color: white; 
             text-align: center;
-            border-radius: 10px;">
+            border-radius: 14px;">
                 <span>முரசொலி செய்தி பதிவுகள்</span>
             </div>
             <p-toast position="top-center" key="t-msg"></p-toast>
-
             <div #outerdiv class="col-12">
                 <div class="col-12"></div>
                 <div class="to-center">USER LOGIN</div>
@@ -35,11 +33,10 @@
                                         <div class="col-12 md:col-2 lg:col-9">
                                             <div class="p-inputgroup">
                                                 <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                                                <input type="password" pInputText placeholder="Password"
+                                                <input id="pswd" type="password" pInputText placeholder="Password"
                                                     [(ngModel)]="password" required>
                                                 <span class="p-inputgroup-addon" (click)="onShowPswd()">
-                                                    <i *ngIf="!showPswd" disabled class="pi pi-eye"
-                                                        aria-hidden="true"></i>
+                                                    <i *ngIf="!showPswd" class="pi pi-eye" aria-hidden="true"></i>
                                                     <i *ngIf="showPswd" class="pi pi-eye-slash" aria-hidden="true"></i>
                                                 </span>
                                             </div>
@@ -56,6 +53,5 @@
                 </div>
             </div>
         </div>
-        <!-- </div> -->
     </div>
 </div>

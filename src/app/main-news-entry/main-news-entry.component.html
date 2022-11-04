@@ -1,9 +1,9 @@
-<div  class="col-10 md:col-3 lg:col-2 no-padding">
+<!-- <div  class="col-10 md:col-3 lg:col-2 no-padding">
     <app-menu></app-menu>
-  </div>
+  </div> -->
 <div class="col-12 md:col-12 lg:col-12">
     <div class="grid to-center">
-        <div class="col-11 md:col-10 lg:col-8 box-shadow">
+        <div class="col-11 md:col-10 lg:col-10 box-shadow no-pad">
             <div #main class="col-12 form-border">
                 <div class="col-12 header">
                     <span>முக்கிய செய்தி பதிவு/Main News Entry</span>
@@ -99,7 +99,7 @@
                     <button pButton type="button" icon="pi pi-fw pi-eye" label="View" (click)="onView()"></button>
 
                 </div>
-                <div *ngIf="showTable"> 
+                <div *ngIf="showTable" class="col-12" style="margin-bottom: 2%"> 
                 <p-table [value]="mainNewsdata" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="40"
                 [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll">
                 <ng-template pTemplate="header">

@@ -47,7 +47,7 @@ export class DailynewEntryComponent implements OnInit {
   // @ViewChild('file', { static: false }) _input: InputText;
 
 
-  constructor(private restApiService: RestAPIService, private messageService: MessageService, 
+  constructor(private restApiService: RestAPIService, private messageService: MessageService,
     private http: HttpClient, private _d: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -79,9 +79,9 @@ export class DailynewEntryComponent implements OnInit {
   }
 
   onSelect(value: any) {
-    let districtSelection:any = [];
-    let stateSelection:any = [];
-    let countrySelection:any = [];
+    let districtSelection: any = [];
+    let stateSelection: any = [];
+    let countrySelection: any = [];
     switch (value) {
       case 'D':
         this.districts.forEach(g => {
@@ -90,22 +90,22 @@ export class DailynewEntryComponent implements OnInit {
         this.districtOptions = districtSelection;
         // this.districtOptions.unshift({ label: '-select-', value: null });
         break;
-        case 'S':
-          this.states.forEach(g => {
-            stateSelection.push({ label: g.statename, value: g.statecode });
-          })
-          this.stateOptions = stateSelection;
-          // this.stateOptions.unshift({ label: '-select-', value: null });
-          break;
-          case 'C':
-            this.countries.forEach(g => {
-              countrySelection.push({ label: g.countryname, value: g.countrycode });
-            })
-            this.countryOptions = countrySelection;
-            // this.countryOptions.unshift({ label: '-select-', value: null });
-            break;
-  } 
-}
+      case 'S':
+        this.states.forEach(g => {
+          stateSelection.push({ label: g.statename, value: g.statecode });
+        })
+        this.stateOptions = stateSelection;
+        // this.stateOptions.unshift({ label: '-select-', value: null });
+        break;
+      case 'C':
+        this.countries.forEach(g => {
+          countrySelection.push({ label: g.countryname, value: g.countrycode });
+        })
+        this.countryOptions = countrySelection;
+        // this.countryOptions.unshift({ label: '-select-', value: null });
+        break;
+    }
+  }
   public uploadFile = (event: any) => {
     // const selectedFile = event.target.files[0];
     // {
@@ -114,33 +114,33 @@ export class DailynewEntryComponent implements OnInit {
     // }
     this.formData = new FormData()
     let fileToUpload: any = <File>event.target.files[0];
-    const folderName =  'Documents';
-    console.log('d',folderName)
+    const folderName = 'Documents';
+    console.log('d', folderName)
     // var curr_datetime = this._datePipe.transform(new Date(), 'ddMMyyyyhmmss');
     const uploadedFilename = (fileToUpload.name).toString();
     const extension = uploadedFilename.substring(uploadedFilename.lastIndexOf('.') + 1, uploadedFilename.length);
-    var filenameWithExtn =  extension;
+    var filenameWithExtn = extension;
     const filename = fileToUpload.name + '^' + folderName + '^' + filenameWithExtn;
     this.formData.append('file', fileToUpload, filename);
     this.FileName = fileToUpload.name;
-    console.log('t',filename)
+    console.log('t', filename)
     this.http.post(this.restApiService.BASEURL + PathConstants.FileUpload_Post, this.formData)
       .subscribe(event => {
       }
       );
     return filenameWithExtn;
   }
-   
-   
+
+
   showImage(url: any) {
     this.showDialog = true;
     this.NewsImage = url;
   }
 
-  
+
 
   onSave() {
-    console.log('d',this.Id)
+    console.log('d', this.Id)
     if (this.Id === 0) {
       const params = {
         'slno': this.Id,
@@ -214,11 +214,11 @@ export class DailynewEntryComponent implements OnInit {
     this.restApiService.get(PathConstants.DailyNewsEntry_Get).subscribe(res => {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
-          res.Table.forEach((i:any )=> {
+          res.Table.forEach((i: any) => {
             i.url = 'assets/layout/Documents/' + i.image;
           }),
-          this.dailyNewsdata = res.Table;
-          
+            this.dailyNewsdata = res.Table;
+
         } else {
           this.messageService.clear();
           this.messageService.add({
@@ -263,7 +263,7 @@ export class DailynewEntryComponent implements OnInit {
       // this.FileName = rowData.image;
       // this._input.el.nativeElement = this.FileName;
       // this.FileName = 'assets/layout/Documents/' + rowData.image;
-      console.log('d',this.FileName)
+      console.log('d', this.FileName)
   }
 
   clear() {

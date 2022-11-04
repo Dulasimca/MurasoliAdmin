@@ -76,7 +76,8 @@ export class DistrictMasterEntryComponent implements OnInit {
   onEdit(rowData: any) {
     this.districtId = rowData.districtcode,
       this.districtName = rowData.districtname,
-      this.selectedType = rowData.flag
+      this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+
   }
 
   onView() {
@@ -85,7 +86,7 @@ export class DistrictMasterEntryComponent implements OnInit {
         if (res.Table.length !== 0) {
           res.Table.forEach((i: any) => {
             i.flag = (i.flag === true) ? 'Active' : 'Inactive'
-           })
+          })
           this.Districtdata = res.Table;
         } else {
           this.Districtdata = [];

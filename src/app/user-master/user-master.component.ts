@@ -82,7 +82,8 @@ export class UserMasterComponent implements OnInit {
     this.email = rowData.emailid;
     this.password = rowData.password;
     this.roleid = rowData.roleid;
-    this.selectedType = rowData.flag
+    this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+
   }
 
   onView() {

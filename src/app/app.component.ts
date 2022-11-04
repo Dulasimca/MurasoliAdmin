@@ -9,21 +9,21 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent {
   title = 'MURASOLI-ADMIN';
   showMenu: boolean = true;
-  hideContent: boolean = false;
+  hideMenu: boolean = false;
 
 constructor(private _router: Router) {
   this._router.events.subscribe((event) => {
     if (event instanceof NavigationEnd) {
-      if (event.url === '/login') {
-        this.hideContent = true;
-        this.showMenu = false;
+      if (event.url === '/login-page' || event.url === '/') {
+        this.hideMenu = false;
       } else {
-        this.hideContent = false;
-        this.showMenu = true;
+        this.hideMenu = true;
       }
     }
   });
 }
+}
+
 // ngAfterViewChecked(): void {
 //   let details = navigator.userAgent;
 //   let regexp = /android|iphone|kindle|ipad/i;
@@ -31,8 +31,10 @@ constructor(private _router: Router) {
 //     console.log('dv', isMobileDevice)
 // }
 
-toggleMenu(value: boolean) {
-  this.showMenu = value;
-  console.log('appcp', this.showMenu, value)
-}
-}
+// toggleMenu(value: boolean) {
+//   this.showMenu = value;
+//   console.log('appcp', this.showMenu, value)
+// }
+
+ 
+

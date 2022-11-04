@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NavigationEnd, Route, Router } from '@angular/router';
+import { OverlayPanel } from 'primeng/overlaypanel';
+
 
 @Component({
   selector: 'app-header',
@@ -7,19 +10,37 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  display: boolean = false;
-  @Output() openMenu = new EventEmitter<boolean>();
-  @Input() hide: boolean = false;
-  constructor() { }
+  hidebutton: boolean = true;
+  @ViewChild('op', { static: false }) _op!: OverlayPanel;
+  username: any;
+
+  constructor(private route: Router) {
+
+  }
 
   ngOnInit(): void {
+    this.checkCurrentPage();
   }
 
-  toggleMenu(value: boolean) {
-    this.display = !this.display;
-    this.openMenu.emit(value);
-    console.log('val', value, this.display)
+  checkCurrentPage() {
+    this.route.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/login-page' || event.url === '/') {
+          this.hidebutton = true;
+        } else {
+          this.hidebutton = false;
+        }
+      }
+    });
   }
 
+  // toggle($event: any) {
+  //   const user = localStorage.getItem('UserInfo');
+  //   this.username = user;
+  //   console.log('y', user)
+  // }
 
+  logout() {
+    this.route.navigate(['/login-page'])
+  }
 }

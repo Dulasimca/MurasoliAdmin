@@ -16,6 +16,7 @@ export class StateMasterEntryComponent implements OnInit {
   selectedType: any;
   Id: number = 0;
   Statedata: any[] = [];
+  slno: any;
 
   constructor(private restApiService: RestAPIService,private messageService: MessageService) { }
 
@@ -24,6 +25,7 @@ export class StateMasterEntryComponent implements OnInit {
   }
 
   onSave() {
+    
     //update
     if (this.Id !== 0) {
       const values = {
@@ -75,9 +77,10 @@ export class StateMasterEntryComponent implements OnInit {
   }
 
   onEdit(rowData: any) {
+    this.auto();
     this.Id = rowData.statecode,
       this.stateName = rowData.statename,
-      this.selectedType = rowData.flag
+      this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
   }
 
   onView() {
@@ -101,7 +104,15 @@ export class StateMasterEntryComponent implements OnInit {
       }
     })
   }
+  auto() {
+    if(this.Statedata.length >= 0) {
+      this.slno = this.Statedata.length + 1
+      console.log('2',this.slno)
+    } else {
+      
+    }
 
+  }
   clear() {
     this.stateName = null;
     this.selectedType = null;

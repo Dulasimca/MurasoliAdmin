@@ -36,6 +36,8 @@ import { MessageService } from 'primeng/api';
 import { RestAPIService } from './Services/restApi.service';
 import { MenuComponent } from './menu/menu.component';
 import { DatePipe } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { DatePipe } from '@angular/common';
     MessageModule,
     MessagesModule,
     MenuModule,
-    DialogModule
+    DialogModule,
+    FlexLayoutModule,
+    OverlayPanelModule
 
   ],
   providers: [MessageService, RestAPIService, DatePipe],
