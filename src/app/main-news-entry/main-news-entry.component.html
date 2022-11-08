@@ -9,23 +9,22 @@
                     <span>முக்கிய செய்தி பதிவு/Main News Entry</span>
                 </div>
                 <p-toast position="center" key="t-msg"></p-toast>
-
                 <div #outerdiv class="col-12">
                     <div #innerdiv class="col-12">
                         <div class="col-12"></div>
                         <div class="grid to-center">
-                            <div class="col-10 md:col-2 lg:col-4">
+                            <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input type="text" pInputText [(ngModel)]="newsTitle" />
                                     <label for="float-input">News Topic</label>
                                 </span>
                             </div>
-                            <!-- <div class="col-12 md:col-2 lg:col-3">
+                            <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input type="text" pInputText [(ngModel)]="newsTitle" />
-                                    <label for="float-input">Translation</label>
+                                    <input type="text" pInputText [(ngModel)]="newsTamilTitle" />
+                                    <label for="float-input">News Topic(Tamil)</label>
                                 </span>
-                            </div> -->
+                            </div>
                             <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-dropdown [options]="priorityOptions" [(ngModel)]="priority" [autoDisplayFirst]="false"></p-dropdown>
@@ -35,7 +34,7 @@
                             <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input pInputText  type="file" pInputText (change)="uploadFile($event)"
-                                        accept=".png" required />
+                                    accept="image/*" required />
                                     <label for="float-input"></label>
                                 </span>
                             </div>
@@ -43,18 +42,18 @@
                     </div>
                     <div class="col-12">
                         <div class="grid to-center">
-                            <!-- <div class="col-12 md:col-2 lg:col-3">
-                                <span class="p-float-label">
-                                    <textarea pInputTextarea [autoResize]="true"
-                                        [(ngModel)]="newsTamilDetail"></textarea>
-                                    <label for="float-input">செய்தி விவரம்</label>
-                                </span>
-                            </div> -->
-                            <div class="col-12 md:col-2 lg:col-4">
+                            <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
                                     <textarea pInputTextarea [autoResize]="true" [(ngModel)]="newsDetail"></textarea>
                                     <label for="float-input">News Details</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <textarea pInputTextarea [autoResize]="true"
+                                        [(ngModel)]="newsTamilDetail"></textarea>
+                                    <label for="float-input">News Details(Tamil)</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
@@ -72,7 +71,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="grid" style="margin-left: 7.8%">
+                        <div class="grid">
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-dropdown [options]="districtOptions" [(ngModel)]="district" (onClick)="onSelect('D')" [autoDisplayFirst]="false"></p-dropdown>
@@ -106,7 +105,9 @@
                     <tr>
                         <th style="width: 50px;">S.No</th>
                         <th>News Topic</th>
+                        <th>News Topic(Tamil)</th>
                         <th>News Details</th>
+                        <th>News Details(Tamil)</th>
                         <th>Display Side</th>
                         <th>Priority Level</th>
                         <th>Location</th>
@@ -138,10 +139,26 @@
                         </td>
                         <td class="td-border">
                             <span class="p-column-title">
+                                News Topic :
+                            </span>
+                            <span style="text-align: end;">
+                                {{rowData.newstitletamil}}
+                            </span>
+                        </td>
+                        <td class="td-border">
+                            <span class="p-column-title">
                                 News Details:
                             </span>
                             <span style="text-align: end;">
                                 {{rowData.details}}
+                            </span>
+                        </td>
+                        <td class="td-border">
+                            <span class="p-column-title">
+                                News Details:
+                            </span>
+                            <span style="text-align: end;">
+                                {{rowData.newsdetailstamil}}
                             </span>
                         </td>
                         <td class="td-border">

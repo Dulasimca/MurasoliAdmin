@@ -141,6 +141,8 @@ export class MainNewsEntryComponent implements OnInit {
       const params = {
         'slno': this.Id,
         'newstitle': this.newsTitle,
+        'newstitletamil': this.newsTamilTitle,
+        'newsdetailstamil': this.newsTamilDetail,
         'details': this.newsDetail,
         'image': this.FileName,
         'location': this.location,
@@ -181,6 +183,8 @@ export class MainNewsEntryComponent implements OnInit {
       const params = {
         'u_slno': this.Id,
         'u_newstitle': this.newsTitle,
+        'u_newstitletamil': this.newsTamilTitle,
+        'u_newsdetailstamil':this.newsTamilDetail,
         'u_details': this.newsDetail,
         'u_image': this.FileName,
         'u_location': this.location,
@@ -248,7 +252,9 @@ export class MainNewsEntryComponent implements OnInit {
   onEdit(rowData: any) {
     this.Id = rowData.slno,
       this.newsTitle = rowData.newstitle,
+      this.newsTamilTitle = rowData.newstitletamil,
       this.newsDetail = rowData.details,
+      this.newsTamilDetail = rowData.newsdetailstamil,
       this.priority = rowData.priority,
       this.display = rowData.displayside,
       this.location = rowData.location,
@@ -266,7 +272,9 @@ export class MainNewsEntryComponent implements OnInit {
     this.stateOptions = [];
     this.countryOptions = [];
     this.location = null;
-    this.filename = ''
+    this.filename = '';
+    this.newsTamilDetail = '';
+    this.newsTamilTitle = '';
     // this._dailynewsform.reset();
   }
 }

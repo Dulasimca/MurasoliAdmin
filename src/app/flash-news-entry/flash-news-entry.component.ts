@@ -33,6 +33,7 @@ export class FlashNewsEntryComponent implements OnInit {
         'location': this.location,
         'incidentdate': this.date,
         'newsdetails': this.newsDetail,
+        'newsdetailstamil': this.newsTamilDetail,
         'flag': true
       }
       this.restApiService.post(PathConstants.FlashNewsEntry_Post, params).subscribe(res => {
@@ -66,6 +67,7 @@ export class FlashNewsEntryComponent implements OnInit {
         'u_location': this.location,
         'u_incidentdate': this._datePipe.transform(this.date, 'MM-dd-yyyy'),
         'u_newsdetails': this.newsDetail,
+        'u_newsdetailstamil': this.newsTamilDetail,
         'u_flag': true
       }
       this.restApiService.post(PathConstants.FlashNewsEntry_Update, params).subscribe(res => {
@@ -92,7 +94,8 @@ export class FlashNewsEntryComponent implements OnInit {
     this.Id = rowData.slno,
       this.date = new Date(rowData.incidentdate),
       this.location = rowData.location,
-      this.newsDetail = rowData.newsdetails
+      this.newsDetail = rowData.newsdetails,
+      this.newsTamilDetail = rowData.newsdetailstamil
   }
 
   Clear() {
@@ -100,6 +103,6 @@ export class FlashNewsEntryComponent implements OnInit {
     this.newsDetail = null;
     this.Id = 0;
     this.date = null;
-
+    this.newsTamilDetail = null;
   }
 }
