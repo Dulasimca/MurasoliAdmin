@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input pInputText  type="file" pInputText (change)="uploadFile($event)"
+                                    <input  #fileSelector id="file" pInputText  type="file" pInputText (change)="uploadFile($event)"
                                     accept="image/*" required />
                                     <label for="float-input"></label>
                                 </span>

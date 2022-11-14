@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessageService, SelectItem } from 'primeng/api';
 import { ResponseMessage } from '../Common-Modules/messages';
@@ -41,6 +41,8 @@ export class MainNewsEntryComponent implements OnInit {
   NewsImage: any;
   Id: number = 0;
   showTable: boolean = false;
+  @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
+
   
   constructor(private restApiService: RestAPIService, private messageService: MessageService, 
     private http: HttpClient, private _d: DomSanitizer) { }
@@ -275,6 +277,8 @@ export class MainNewsEntryComponent implements OnInit {
     this.filename = '';
     this.newsTamilDetail = '';
     this.newsTamilTitle = '';
+    this.fileSelector.nativeElement.value = null;
+    
     // this._dailynewsform.reset();
   }
 }

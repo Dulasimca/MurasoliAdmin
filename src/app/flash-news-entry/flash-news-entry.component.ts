@@ -118,7 +118,7 @@ export class FlashNewsEntryComponent implements OnInit {
   }
 
   Clear() {
-    this.location = null;
+    this.location = '';
     this.newsDetail = null;
     this.Id = 0;
     this.date = null;

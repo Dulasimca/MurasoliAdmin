@@ -21,7 +21,7 @@
                            
                             <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input id="file" pInputText  type="file" pInputText (change)="uploadFile($event)"
+                                    <input #fileSelector id="file" pInputText  type="file" pInputText (change)="uploadFile($event)"
                                         accept=".pdf" required />
                                     <label for="float-input"></label>
                                 </span>

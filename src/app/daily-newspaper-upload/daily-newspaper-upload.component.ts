@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { ResponseMessage } from '../Common-Modules/messages';
 import { PathConstants } from '../Common-Modules/Pathconstants';
 import { RestAPIService } from '../Services/restApi.service';
 
@@ -16,19 +18,21 @@ export class DailyNewspaperUploadComponent implements OnInit {
   public formData = new FormData();
   FileName: any;
   slNo: any;
+  @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
 
 
-  constructor(private http: HttpClient, private restApiService: RestAPIService, private datePipe: DatePipe) { }
+  constructor(private http: HttpClient, private restApiService: RestAPIService, private datePipe: DatePipe, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.onView();
+    this.slNo = 0;
   }
+
 
   public uploadFile = (event: any) => {
     this.formData = new FormData()
     let fileToUpload: any = <File>event.target.files[0];
     const folderName = 'Newspapers';
-    console.log('d', folderName)
     const uploadedFilename = (fileToUpload.name).toString();
     const extension = uploadedFilename.substring(uploadedFilename.lastIndexOf('.') + 1, uploadedFilename.length);
     var filenameWithExtn = extension;
@@ -52,7 +56,29 @@ export class DailyNewspaperUploadComponent implements OnInit {
       'flag': true
     }
     this.restApiService.post(PathConstants.DailyNewsPaper_Post, params).subscribe(res => {
-
+      if(res) {
+        this.onView();
+      this.Clear();
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
+            summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.SuccessMessage
+          });
+        }else {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+          });
+        }
+      }, (err: HttpErrorResponse) => {
+        if (err.status === 0 || err.status === 400) {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+          })
+        }
     })
   }
 
@@ -70,7 +96,13 @@ export class DailyNewspaperUploadComponent implements OnInit {
     })
   }
 
-  onEdit(rowData: any) {
+  Clear() {
+    this.date = null;
+    this.fileSelector.nativeElement.value = null;
+  }
 
+  onEdit(rowData: any) {
+    this.slNo = rowData.id,
+    this.date = new Date(rowData.newspaperdate)
   }
 }

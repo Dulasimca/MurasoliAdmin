@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MessageService, SelectItem } from 'primeng/api';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { PathConstants } from '../Common-Modules/Pathconstants';
@@ -43,6 +43,8 @@ export class DailynewEntryComponent implements OnInit {
   showDialog: boolean = false;
   NewsImage: string = '';
   showTable: boolean = false;
+  @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
+
 
   // @ViewChild('file', { static: false }) _input: InputText;
 
@@ -280,6 +282,8 @@ export class DailynewEntryComponent implements OnInit {
     this.filename = '';
     this.newsTamilTitle = '';
     this.newsTamilTitle = '';
+    this.fileSelector.nativeElement.value = null;
+
     // this._dailynewsform.reset();
   }
 }
