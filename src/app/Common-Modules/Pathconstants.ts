@@ -21,6 +21,11 @@ export class PathConstants {
     public static readonly FlashNewsEntry_Post = 'FlashNewsEntry/AddFlashNewsEntry';
     public static readonly FlashNewsEntry_Get = 'FlashNewsEntry/GetFlashNewsEntry';
     public static readonly FlashNewsEntry_Update = 'UpdateFlashNewsEntry/UpdateFlashNewsEntry';
+    public static readonly DailyNewsPaper_Post = 'DailyNewsPaper/AddDailynewspaper';
+    public static readonly DailyNewsPaper_Get = 'DailyNewsPaper/GetDailyNewsPaper';
+    public static readonly UpdateDailyNewsPaper_Get = 'UpdateDailyNewsPaper/UpdateDailyNewsPaper';
+
+
 
 }
      

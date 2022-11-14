@@ -35,7 +35,7 @@
                             <div class="col-10 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input pInputText  type="file" pInputText (change)="uploadFile($event)"
-                                        accept=".png" required />
+                                    accept="image/*"  required />
                                     <label for="float-input"></label>
                                 </span>
                             </div>
@@ -43,7 +43,6 @@
                     </div>
                     <div class="col-12">
                         <div class="grid to-center">
-                           
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CountryMasterComponent } from './country-master/country-master.component';
+import { DailyNewspaperUploadComponent } from './daily-newspaper-upload/daily-newspaper-upload.component';
 import { DailynewEntryComponent } from './dailynew-entry/dailynew-entry.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DistrictMasterEntryComponent } from './district-master-entry/district-master-entry.component';
@@ -22,7 +23,9 @@ const routes: Routes = [
   {path: 'district-master', component:DistrictMasterEntryComponent},
   {path: 'state-master', component:StateMasterEntryComponent},
   {path: 'country-master', component:CountryMasterComponent},
-  {path: 'menu', component:MenuComponent}
+  {path: 'menu', component:MenuComponent},
+  {path: 'newspaper-upload', component:DailyNewspaperUploadComponent}
+
 
 ];
 
