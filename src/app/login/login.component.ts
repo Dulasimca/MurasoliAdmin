@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
             summary: ResponseMessage.SUMMARY_INVALID, detail: ResponseMessage.LoginFailed
           })
     }
-    
   })
   this.login();
 }

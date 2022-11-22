@@ -102,7 +102,7 @@ export class DailyNewspaperUploadComponent implements OnInit {
   }
 
   onEdit(rowData: any) {
-    this.slNo = rowData.id,
-    this.date = new Date(rowData.newspaperdate)
+    this.slNo = rowData.g_id,
+    this.date = new Date(rowData.g_newspaperdate)
   }
 }

@@ -78,9 +78,9 @@ export class StateMasterEntryComponent implements OnInit {
 
   onEdit(rowData: any) {
     this.auto();
-    this.Id = rowData.statecode,
-      this.stateName = rowData.statename,
-      this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+    this.Id = rowData.g_stateid,
+      this.stateName = rowData.g_statename,
+      this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
   }
 
   onView() {

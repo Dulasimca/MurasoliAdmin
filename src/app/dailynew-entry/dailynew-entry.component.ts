@@ -44,6 +44,8 @@ export class DailynewEntryComponent implements OnInit {
   NewsImage: string = '';
   showTable: boolean = false;
   @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
+  @ViewChild('f', { static: false }) dailynewsForm!: NgForm;
+  // @ViewChild('fileselector', { static: false }) uploadfilename!: ElementRef;
 
 
   // @ViewChild('file', { static: false }) _input: InputText;
@@ -87,21 +89,21 @@ export class DailynewEntryComponent implements OnInit {
     switch (value) {
       case 'D':
         this.districts.forEach(g => {
-          districtSelection.push({ label: g.districtname, value: g.districtcode });
+          districtSelection.push({ label: g.g_districtname, value: g.g_districtid });
         })
         this.districtOptions = districtSelection;
         // this.districtOptions.unshift({ label: '-select-', value: null });
         break;
       case 'S':
         this.states.forEach(g => {
-          stateSelection.push({ label: g.statename, value: g.statecode });
+          stateSelection.push({ label: g.g_statename, value: g.g_stateid });
         })
         this.stateOptions = stateSelection;
         // this.stateOptions.unshift({ label: '-select-', value: null });
         break;
       case 'C':
         this.countries.forEach(g => {
-          countrySelection.push({ label: g.countryname, value: g.countrycode });
+          countrySelection.push({ label: g.g_countryname, value: g.g_countryid });
         })
         this.countryOptions = countrySelection;
         // this.countryOptions.unshift({ label: '-select-', value: null });
@@ -109,6 +111,7 @@ export class DailynewEntryComponent implements OnInit {
     }
   }
   public uploadFile = (event: any) => {
+    console.log('file',this.fileSelector, event)
    
     this.formData = new FormData()
     let fileToUpload: any = <File>event.target.files[0];
@@ -211,12 +214,15 @@ export class DailynewEntryComponent implements OnInit {
     }
   }
   onView() {
+    this.clear();
     this.showTable = true;
     this.restApiService.get(PathConstants.DailyNewsEntry_Get).subscribe(res => {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
           res.Table.forEach((i: any) => {
-            i.url = 'assets/layout/Documents/' + i.image;
+            i.url = 'assets/layout/Documents/' + i.g_image;
+            i.g_priorityname = (i.g_priority === 0) ? 'Low' : (i.g_priority === 1) ? 'Medium' : (i.g_priority === 2) ? 'High' : '-';
+            i.g_displaysidename = (i.g_displayside === 0) ? 'Left' : (i.g_displayside === 1) ? 'Right' : (i.g_displayside === 2) ? 'Center' : '-';
           }),
             this.dailyNewsdata = res.Table;
 
@@ -230,7 +236,6 @@ export class DailynewEntryComponent implements OnInit {
       }
     })
   }
-
 
   // translate(value: number) {
   //   let headers = new HttpHeaders({
@@ -252,38 +257,45 @@ export class DailynewEntryComponent implements OnInit {
   // }
 
   onEdit(rowData: any) {
-    this.Id = rowData.slno,
-      this.newsTitle = rowData.newstitle,
-      this.newsDetail = rowData.details,
-      this.newsTamilTitle = rowData.newstitletamil,
-      this.newsTamilDetail = rowData.newsdetailstamil,
-      this.priority = rowData.priority,
-      this.display = rowData.displayside,
-      this.location = rowData.location,
-      this.district = rowData.district,
-      this.state = rowData.state,
-      this.country = rowData.country,
+    this.Id = rowData.g_slno,
+      this.newsTitle = rowData.g_newstitle,
+      this.newsDetail = rowData.g_details,
+      this.newsTamilTitle = rowData.g_newstitletamil,
+      this.newsTamilDetail = rowData.g_newsdetailstamil,
+      this.priority = rowData.g_priority,
+      this.priorityOptions = [{label:rowData.g_priorityname, value:rowData.g_priority}]
+      this.display = rowData.g_displayside,
+      this.displayOptions = [{label: rowData.g_displaysidename, value:rowData.g_displayside}]
+      this.location = rowData.g_location,
+      this.district = rowData.g_district;
+      this.districtOptions = [{ label: rowData.g_districtname, value: rowData.g_district}];
+      this.state = rowData.g_state,
+      this.stateOptions = [{label:rowData.g_statename, value: rowData.g_state}];
+      this.country = rowData.g_country,
+      this.countryOptions = [{label:rowData.g_countryname, value: rowData.g_country}];
       // this.FileName = rowData.image;
       // this._input.el.nativeElement = this.FileName;
-      // this.FileName = 'assets/layout/Documents/' + rowData.image;
-      console.log('d', this.FileName)
+      // this.fileSelector.nativeElement.value = 'C:\\fakepath\\Capture.PNG';
+      // this.fileSelector.nativeElement.value = rowData.g_image;
+      // this.dailynewsForm.controls['filename']
+      // this.dailynewsForm.controls.uploadfilename.setValue('C:\\fakepath\\Capture.PNG');
+      console.log(this.fileSelector.nativeElement.value)
   }
 
   clear() {
     this.Id = 0;
-    this.newsDetail = '';
-    this.newsTitle = null;
-    this.displayOptions = [];
-    this.priorityOptions = [];
-    this.districtOptions = [];
-    this.stateOptions = [];
-    this.countryOptions = [];
-    this.location = null;
-    this.filename = '';
-    this.newsTamilTitle = '';
-    this.newsTamilTitle = '';
+    // this.newsDetail = '';
+    // this.newsTitle = null;
+    // this.displayOptions = [];
+    // this.priorityOptions = [];
+    // this.districtOptions = [];
+    // this.stateOptions = [];
+    // this.countryOptions = [];
+    // this.location = null;
+    // this.filename = '';
+    // this.newsTamilTitle = '';
+    // this.newsTamilDetail = '';
     this.fileSelector.nativeElement.value = null;
-
-    // this._dailynewsform.reset();
+    this.dailynewsForm.reset();
   }
 }

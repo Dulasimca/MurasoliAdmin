@@ -77,13 +77,12 @@ export class UserMasterComponent implements OnInit {
   }
   }
   onEdit(rowData: any) {
-    this.id = rowData.id;
-    this.username = rowData.username;
-    this.email = rowData.emailid;
-    this.password = rowData.password;
-    this.roleid = rowData.roleid;
-    this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
-
+    this.id = rowData.g_id;
+    this.username = rowData.g_username;
+    this.email = rowData.g_emailid;
+    this.password = rowData.g_password;
+    this.roleid = rowData.g_roleid;
+    this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
   }
 
   onView() {
@@ -91,7 +90,7 @@ export class UserMasterComponent implements OnInit {
       if(res !== null && res !== undefined) {
         if(res.Table.length !== 0 ) {
           res.Table.forEach((i: any) => {
-           i.flag = (i.flag === true) ? 'Active' : 'Inactive'
+           i.g_flag = (i.g_flag === true) ? 'Active' : 'Inactive'
           })
           this.userdata = res.Table;
         } else{

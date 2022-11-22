@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MessageService, SelectItem } from 'primeng/api';
 import { ResponseMessage } from '../Common-Modules/messages';
@@ -42,6 +43,7 @@ export class MainNewsEntryComponent implements OnInit {
   Id: number = 0;
   showTable: boolean = false;
   @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
+  @ViewChild('f',{ static: false}) mainNewsForm!: NgForm;
 
   
   constructor(private restApiService: RestAPIService, private messageService: MessageService, 
@@ -83,21 +85,21 @@ export class MainNewsEntryComponent implements OnInit {
     switch (value) {
       case 'D':
         this.districts.forEach((d:any) => {
-          districtSelection.push({ label: d.districtname, value: d.districtcode });
+          districtSelection.push({ label: d.g_districtname, value: d.g_districtid });
         })
         this.districtOptions = districtSelection;
         // this.districtOptions.unshift({ label: '-select-', value: null });
         break;
       case 'S':
         this.states.forEach((s:any) => {
-          stateSelection.push({ label: s.statename, value: s.statecode });
+          stateSelection.push({ label: s.g_statename, value: s.g_stateid });
         })
         this.stateOptions = stateSelection;
         // this.stateOptions.unshift({ label: '-select-', value: null });
         break;
       case 'C':
         this.countries.forEach((c:any) => {
-          countrySelection.push({ label: c.countryname, value: c.countrycode });
+          countrySelection.push({ label: c.g_countryname, value: c.g_countryid });
         })
         this.countryOptions = countrySelection;
         // this.countryOptions.unshift({ label: '-select-', value: null });
@@ -217,7 +219,9 @@ export class MainNewsEntryComponent implements OnInit {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
           res.Table.forEach((i:any )=> {
-            i.url = 'assets/layout/Documents/' + i.image;
+            i.url = 'assets/layout/Documents/' + i.g_image;
+            i.g_priorityname = (i.g_priority === 0) ? 'Low' : (i.g_priority === 1) ? 'Medium' : (i.g_priority === 2) ? 'High' : '-';
+            i.g_displaysidename = (i.g_displayside === 0) ? 'Left' : (i.g_displayside === 1) ? 'Right' : (i.g_displayside === 2) ? 'Center' : '-';
           }),
           this.mainNewsdata = res.Table;
         } else {
@@ -252,34 +256,38 @@ export class MainNewsEntryComponent implements OnInit {
   // }
 
   onEdit(rowData: any) {
-    this.Id = rowData.slno,
-      this.newsTitle = rowData.newstitle,
-      this.newsTamilTitle = rowData.newstitletamil,
-      this.newsDetail = rowData.details,
-      this.newsTamilDetail = rowData.newsdetailstamil,
-      this.priority = rowData.priority,
-      this.display = rowData.displayside,
-      this.location = rowData.location,
-      this.district = rowData.district,
-      this.state = rowData.state,
-      this.country = rowData.country
+    this.Id = rowData.g_slno,
+      this.newsTitle = rowData.g_newstitle,
+      this.newsTamilTitle = rowData.g_newstitletamil,
+      this.newsDetail = rowData.g_details,
+      this.newsTamilDetail = rowData.g_newsdetailstamil,
+      this.priority = rowData.g_priority,
+      this.priorityOptions = [{label:rowData.g_priorityname, value:rowData.g_priority}]
+      this.display = rowData.g_displayside,
+      this.displayOptions = [{label: rowData.g_displaysidename, value:rowData.g_displayside}]
+      this.location = rowData.g_location,
+      this.district = rowData.g_district;
+      this.districtOptions = [{ label: rowData.g_districtname, value: rowData.g_district}];
+      this.state = rowData.g_state,
+      this.stateOptions = [{label:rowData.g_statename, value: rowData.g_state}];
+      this.country = rowData.g_country,
+      this.countryOptions = [{label:rowData.g_countryname, value: rowData.g_country}];
   }
 
   clear() {
-    this.newsDetail = '';
-    this.newsTitle = null;
-    this.displayOptions = [];
-    this.priorityOptions = [];
-    this.districtOptions = [];
-    this.stateOptions = [];
-    this.countryOptions = [];
-    this.location = null;
-    this.filename = '';
-    this.newsTamilDetail = '';
-    this.newsTamilTitle = '';
+    // this.newsDetail = '';
+    // this.newsTitle = null;
+    // this.displayOptions = [];
+    // this.priorityOptions = [];
+    // this.districtOptions = [];
+    // this.stateOptions = [];
+    // this.countryOptions = [];
+    // this.location = null;
+    // this.filename = '';
+    // this.newsTamilDetail = '';
+    // this.newsTamilTitle = '';
     this.fileSelector.nativeElement.value = null;
-    
-    // this._dailynewsform.reset();
+    this.mainNewsForm.reset();
   }
 }
 

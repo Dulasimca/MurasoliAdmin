@@ -74,9 +74,9 @@ export class DistrictMasterEntryComponent implements OnInit {
   }
 
   onEdit(rowData: any) {
-    this.districtId = rowData.districtcode,
-      this.districtName = rowData.districtname,
-      this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+    this.districtId = rowData.g_districtid,
+      this.districtName = rowData.g_districtname,
+      this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
 
   }
 

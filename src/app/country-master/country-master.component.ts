@@ -81,9 +81,9 @@ export class CountryMasterComponent implements OnInit {
   }
 
   onEdit(rowData: any) {
-    this.countryId = rowData.countrycode,
-      this.countryName = rowData.countryname,
-      this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
+    this.countryId = rowData.g_countryid,
+      this.countryName = rowData.g_countryname,
+      this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
 
   }
 
