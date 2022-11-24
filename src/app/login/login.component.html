@@ -14,6 +14,7 @@
             </div>
             <p-toast position="top-center" key="t-msg"></p-toast>
             <div #outerdiv class="col-12">
+                <form #f="ngForm" name="login"> 
                 <div class="col-12"></div>
                 <div class="to-center">USER LOGIN</div>
                 <div #innerdiv class="col-12 md:col-12 lg:col-12">
@@ -24,7 +25,7 @@
                                 <div class="col-12 md:col-2 lg:col-9">
                                     <div class="p-inputgroup">
                                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                        <input type="text" pInputText placeholder="Username" [(ngModel)]="username"
+                                        <input type="text" name="_username" pInputText placeholder="Username" [(ngModel)]="username"
                                             required>
                                     </div>
                                 </div>
@@ -33,7 +34,7 @@
                                         <div class="col-12 md:col-2 lg:col-9">
                                             <div class="p-inputgroup">
                                                 <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                                                <input id="pswd" type="password" pInputText placeholder="Password"
+                                                <input id="pswd" type="password" name="_password" pInputText placeholder="Password"
                                                     [(ngModel)]="password" required>
                                                 <span class="p-inputgroup-addon" (click)="onShowPswd()">
                                                     <i *ngIf="!showPswd" class="pi pi-eye" aria-hidden="true"></i>
@@ -47,10 +48,11 @@
                         </div>
                         <div class="col-12 div-txt-align-ct">
                             <button pButton type="button" icon="pi pi-fw pi-sign-in" label="Login"
-                                (click)="onLogin()"></button>
+                                (click)="onLogin()" [disabled]="(!username || !password)"></button>
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>

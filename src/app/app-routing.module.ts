@@ -9,24 +9,23 @@ import { FlashNewsEntryComponent } from './flash-news-entry/flash-news-entry.com
 import { LoginComponent } from './login/login.component';
 import { MainNewsEntryComponent } from './main-news-entry/main-news-entry.component';
 import { MenuComponent } from './menu/menu.component';
+import { AuthGuard } from './Services/authguard';
 import { StateMasterEntryComponent } from './state-master-entry/state-master-entry.component';
 import { UserMasterComponent } from './user-master/user-master.component';
 
 const routes: Routes = [
   { path:'',   redirectTo:'/login-page', pathMatch:'full' },
   {path: 'login-page', component:LoginComponent},
-  {path: 'daily-news-entry', component:DailynewEntryComponent},
-  {path: 'main-news-entry', component:MainNewsEntryComponent},
-  {path: 'flash-news-entry', component:FlashNewsEntryComponent},
-  {path: 'user-master', component:UserMasterComponent},
-  {path: 'dashboard', component:DashboardComponent},
-  {path: 'district-master', component:DistrictMasterEntryComponent},
-  {path: 'state-master', component:StateMasterEntryComponent},
-  {path: 'country-master', component:CountryMasterComponent},
+  {path: 'daily-news-entry', component:DailynewEntryComponent, canActivate:[AuthGuard]},
+  {path: 'main-news-entry', component:MainNewsEntryComponent, canActivate:[AuthGuard]},
+  {path: 'flash-news-entry', component:FlashNewsEntryComponent, canActivate:[AuthGuard]},
+  {path: 'user-master', component:UserMasterComponent, canActivate:[AuthGuard]},
+  {path: 'district-master', component:DistrictMasterEntryComponent, canActivate:[AuthGuard]},
+  {path: 'state-master', component:StateMasterEntryComponent, canActivate:[AuthGuard]},
+  {path: 'country-master', component:CountryMasterComponent, canActivate:[AuthGuard]},
   {path: 'menu', component:MenuComponent},
-  {path: 'newspaper-upload', component:DailyNewspaperUploadComponent}
-
-
+  {path: 'newspaper-upload', component:DailyNewspaperUploadComponent, canActivate:[AuthGuard]},
+  {path: 'dashboard', component:DashboardComponent},
 ];
 
 @NgModule({

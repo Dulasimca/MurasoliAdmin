@@ -117,6 +117,10 @@ background:rgb(0 0 0)
     box-shadow: 0 0 0 0.2rem #d3d3d3 !important;
     border-color: #666565 !important;
 }
+.p-dropdown {
+    background: #ffffff;
+    border: 1px solid #ced4da !important;
+}
 .p-inputtext:enabled:focus {
     box-shadow: 0 0 0 0.2rem #d3d3d3 !important;
     border-color: #666565 !important;
@@ -134,7 +138,7 @@ background:rgb(0 0 0)
     padding: .3rem .3rem !important;
 }
 .p-dropdown:not(.p-disabled):hover {
-    border-color: #e32727 ;
+    border-color:  #666565 !important;
 }
  
 //dashboard
