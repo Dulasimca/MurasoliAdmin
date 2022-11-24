@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'country-master', component:CountryMasterComponent, canActivate:[AuthGuard]},
   {path: 'menu', component:MenuComponent},
   {path: 'newspaper-upload', component:DailyNewspaperUploadComponent, canActivate:[AuthGuard]},
-  {path: 'dashboard', component:DashboardComponent},
+  {path: 'dashboard', component:DashboardComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({

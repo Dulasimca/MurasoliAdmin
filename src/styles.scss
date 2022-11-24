@@ -83,8 +83,14 @@ background:rgb(0 0 0)
 }
 .p-dropdown {
     width: -webkit-fill-available !important;
+    box-shadow: inherit !important;
+    
 }
-
+.p-dropdown-open {
+    box-shadow: 0 0 0 0.2rem #d8d6d6e3 !important;
+    border-color: #d8d6d6e3 !important;
+}
+ 
 .p-inputtext {
     padding: 0.5rem !important;
     width: -webkit-fill-available !important;
@@ -113,13 +119,8 @@ background:rgb(0 0 0)
 .p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
     border-color: rgb(135 132 132 / 89%) !important;
 }
-.p-dropdown:enabled:focus {
-    box-shadow: 0 0 0 0.2rem #d3d3d3 !important;
-    border-color: #666565 !important;
-}
-.p-dropdown {
-    background: #ffffff;
-    border: 1px solid #ced4da !important;
+.p-dropdown:not(.p-disabled):hover {
+    border-color: #303130 !important;
 }
 .p-inputtext:enabled:focus {
     box-shadow: 0 0 0 0.2rem #d3d3d3 !important;
@@ -137,9 +138,9 @@ background:rgb(0 0 0)
 .p-datatable .p-datatable-thead > tr > th {
     padding: .3rem .3rem !important;
 }
-.p-dropdown:not(.p-disabled):hover {
-    border-color:  #666565 !important;
-}
+// .p-dropdown:not(.p-disabled):hover {
+//     border-color:  #666565 !important;
+// }
  
 //dashboard
 .overview-box {
