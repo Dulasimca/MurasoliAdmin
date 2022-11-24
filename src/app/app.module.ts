@@ -78,7 +78,7 @@ import { DailyNewspaperUploadComponent } from './daily-newspaper-upload/daily-ne
     MenuModule,
     DialogModule,
     FlexLayoutModule,
-    OverlayPanelModule
+    OverlayPanelModule,
 
   ],
   providers: [MessageService, RestAPIService, DatePipe],

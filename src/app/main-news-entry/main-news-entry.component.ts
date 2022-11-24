@@ -108,24 +108,15 @@ export class MainNewsEntryComponent implements OnInit {
   }
 
   public uploadFile = (event: any) => {
-
-    // const selectedFile = event.target.files[0];
-    // {
-    //   const url = window.URL.createObjectURL(selectedFile);
-    //   this.filename = this._d.bypassSecurityTrustUrl(url);
-    // }
     this.formData = new FormData()
     let fileToUpload: any = <File>event.target.files[0];
     const folderName =  'Documents';
-    console.log('d',folderName)
-    // var curr_datetime = this._datePipe.transform(new Date(), 'ddMMyyyyhmmss');
     const uploadedFilename = (fileToUpload.name).toString();
     const extension = uploadedFilename.substring(uploadedFilename.lastIndexOf('.') + 1, uploadedFilename.length);
     var filenameWithExtn =  extension;
     const filename = fileToUpload.name + '^' + folderName + '^' + filenameWithExtn;
     this.formData.append('file', fileToUpload, filename);
     this.FileName = fileToUpload.name;
-    console.log('t',filename)
     this.http.post(this.restApiService.BASEURL + PathConstants.FileUpload_Post, this.formData)
       .subscribe(event => {
       }
@@ -137,8 +128,6 @@ export class MainNewsEntryComponent implements OnInit {
     this.showDialog = true;
     this.NewsImage = url;
   }
-
-  
 
   onSave() {
     if (this.Id === 0) {
@@ -213,6 +202,7 @@ export class MainNewsEntryComponent implements OnInit {
       })
     }
   }
+  
   onView() {
     this.showTable = true;
     this.restApiService.get(PathConstants.MainNewsEntry_Get).subscribe(res => {

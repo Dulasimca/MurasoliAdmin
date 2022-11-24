@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
   this.loginData.forEach((i:any) => {
     if(
-   ( i.username === this.username && i.password === this.password)
+   ( i.g_username === this.username && i.g_password === this.password)
     ) {
    this.route.navigate(['/dashboard'])
     } else {

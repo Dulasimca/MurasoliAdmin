@@ -4,9 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { PathConstants } from '../Common-Modules/Pathconstants';
 import { RestAPIService } from '../Services/restApi.service';
 import { ResponseMessage } from '../Common-Modules/messages';
-import { DatePipe } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
-import { InputText } from 'primeng/inputtext';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -36,7 +34,7 @@ export class DailynewEntryComponent implements OnInit {
   Id: any;
   dailyNewsdata: any[] = [];
   public formData = new FormData();
-  FileName: any;
+  fileName: any;
   districts: any[] = [];
   countries: any[] = [];
   states: any[] = [];
@@ -111,19 +109,15 @@ export class DailynewEntryComponent implements OnInit {
     }
   }
   public uploadFile = (event: any) => {
-    console.log('file',this.fileSelector, event)
-   
     this.formData = new FormData()
     let fileToUpload: any = <File>event.target.files[0];
     const folderName = 'Documents';
-    console.log('d', folderName)
     const uploadedFilename = (fileToUpload.name).toString();
     const extension = uploadedFilename.substring(uploadedFilename.lastIndexOf('.') + 1, uploadedFilename.length);
     var filenameWithExtn = extension;
     const filename = fileToUpload.name + '^' + folderName + '^' + filenameWithExtn;
     this.formData.append('file', fileToUpload, filename);
-    this.FileName = fileToUpload.name;
-    console.log('t', filename)
+    this.fileName = fileToUpload.name;
     this.http.post(this.restApiService.BASEURL + PathConstants.FileUpload_Post, this.formData)
       .subscribe(event => {
       }
@@ -131,16 +125,12 @@ export class DailynewEntryComponent implements OnInit {
     return filenameWithExtn;
   }
 
-
   showImage(url: any) {
     this.showDialog = true;
     this.NewsImage = url;
   }
 
-
-
   onSave() {
-    console.log('d', this.Id)
     if (this.Id === 0) {
       const params = {
         'slno': this.Id,
@@ -148,7 +138,7 @@ export class DailynewEntryComponent implements OnInit {
         'newstitletamil': this.newsTamilTitle,
         'newsdetailstamil': this.newsTamilDetail,
         'details': this.newsDetail,
-        'image': this.FileName,
+        'image': this.fileName,
         'location': this.location,
         'district': this.district,
         'state': this.state,
@@ -190,7 +180,7 @@ export class DailynewEntryComponent implements OnInit {
         'u_newstitletamil': this.newsTamilTitle,
         'u_newsdetailstamil': this.newsTamilDetail,
         'u_details': this.newsDetail,
-        'u_image': this.FileName,
+        'u_image': this.fileName,
         'u_location': this.location,
         'u_district': this.district,
         'u_state': this.state,
@@ -214,7 +204,6 @@ export class DailynewEntryComponent implements OnInit {
     }
   }
   onView() {
-    this.clear();
     this.showTable = true;
     this.restApiService.get(PathConstants.DailyNewsEntry_Get).subscribe(res => {
       if (res !== null && res !== undefined) {
@@ -257,7 +246,7 @@ export class DailynewEntryComponent implements OnInit {
   // }
 
   onEdit(rowData: any) {
-    this.Id = rowData.g_slno,
+      this.Id = rowData.g_slno,
       this.newsTitle = rowData.g_newstitle,
       this.newsDetail = rowData.g_details,
       this.newsTamilTitle = rowData.g_newstitletamil,
@@ -274,12 +263,16 @@ export class DailynewEntryComponent implements OnInit {
       this.country = rowData.g_country,
       this.countryOptions = [{label:rowData.g_countryname, value: rowData.g_country}];
       // this.FileName = rowData.image;
-      // this._input.el.nativeElement = this.FileName;
-      // this.fileSelector.nativeElement.value = 'C:\\fakepath\\Capture.PNG';
-      // this.fileSelector.nativeElement.value = rowData.g_image;
-      // this.dailynewsForm.controls['filename']
-      // this.dailynewsForm.controls.uploadfilename.setValue('C:\\fakepath\\Capture.PNG');
-      console.log(this.fileSelector.nativeElement.value)
+      // this.FileName = rowData.image;
+    // this._input.el.nativeElement = this.FileName;
+    // this.fileSelector.nativeElement.value = 'C:\\fakepath\\Capture.PNG';
+    // this.fileSelector.nativeElement.value = rowData.g_image;
+    // this.dailynewsForm.controls['filename']
+    // this.dailynewsForm.controls['uploadfilename'].setValue();
+    // var blob = new Blob([JSON.stringify('assets/layout/Documents' + rowData.g_image)]);
+    // var url = URL.createObjectURL(blob);
+    // this.dailynewsForm.controls['uploadfilename'].setValue(url);
+    this.fileName = rowData.g_image;
   }
 
   clear() {
