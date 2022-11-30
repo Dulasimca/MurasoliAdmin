@@ -14,6 +14,13 @@
                         <div #innerdiv class="col-12">
                             <div class="col-12"></div>
                             <div class="grid to-center">
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <p-calendar name="_date" [(ngModel)]="incidentDate" [readonlyInput]="true"
+                                            [showIcon]="true" [autoZIndex]="true"></p-calendar>
+                                        <label for="_date">Incident Date</label>
+                                    </span>
+                                </div>
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <input type="text" name="_newstitle" pInputText [(ngModel)]="newsTitle"
@@ -31,10 +38,15 @@
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-dropdown name="_priority" [options]="priorityOptions" [(ngModel)]="priority"
-                                            [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                        (onClick)="onSelect('P')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
                                         <label for="_priority">Priority Level</label>
                                     </span>
                                 </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="grid to-center">
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <input #fileSelector id="file" name="uploadfilename" pInputText type="file"
@@ -42,10 +54,36 @@
                                         <label for="uploadfilename"></label>
                                     </span>
                                 </div>
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
+                                        <textarea name="_newsshort" pInputTextarea [autoResize]="true"
+                                            [(ngModel)]="newsShort" required></textarea>
+                                        <label for="_newsshort">News Details(in short)</label>
+                                    </span>
+                                </div>
+
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
+                                        <textarea name="_newstamilshort" pInputTextarea [autoResize]="true" placeholder="max 100characters only"
+                                            [(ngModel)]="newsTamilShort" required></textarea>
+                                        <label for="_newstamilshort">News Details(தமிழில் சுருக்கமாக )</label>
+                                    </span>
+                                </div>
+
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <p-dropdown name="_display" [options]="displayOptions" [(ngModel)]="display"
+                                        (onClick)="onSelect('DP')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                        <label for="_display">Display side</label>
+                                    </span>
+                                </div>
+
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="grid to-center">
+                            <div class="grid">
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
@@ -63,22 +101,11 @@
                                 </div>
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
-                                        <p-dropdown name="_display" [options]="displayOptions" [(ngModel)]="display"
-                                            [autoDisplayFirst]="false" [required]="true"></p-dropdown>
-                                        <label for="_display">Display side</label>
-                                    </span>
-                                </div>
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
                                         <input name="_location" type="text" pInputText [(ngModel)]="location"
                                             required />
                                         <label for="_location">Location</label>
                                     </span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="grid">
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-dropdown [options]="districtOptions" name="_district" [(ngModel)]="district"
@@ -87,6 +114,11 @@
                                         <label for="_district">District</label>
                                     </span>
                                 </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="grid">
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-dropdown [options]="stateOptions" name="_state" [(ngModel)]="state"
@@ -119,6 +151,7 @@
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width: 50px;">S.No</th>
+                                <th>Incident Date</th>
                                 <th>News Topic</th>
                                 <th>News Topic(Tamil)</th>
                                 <th>News Details</th>
@@ -143,7 +176,14 @@
                                         {{rowIndex+1}}
                                     </span>
                                 </td>
-
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Incident date :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_incidentdate}}
+                                    </span>
+                                </td>
                                 <td class="td-border">
                                     <span class="p-column-title">
                                         News Topic :

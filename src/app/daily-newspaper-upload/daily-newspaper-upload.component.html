@@ -10,7 +10,13 @@
                     <div #innerdiv class="col-12">
                         <div class="col-12"></div>
                         <div class="grid to-center">
-                            
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="districtOptions" name="_district" [(ngModel)]="district"
+                                        (onClick)="onSelect('D')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                    <label for="_district">District</label>
+                                </span>
+                            </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-calendar [(ngModel)]="date" [readonlyInput]="true" [showIcon]="true"
@@ -40,6 +46,7 @@
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width: 50px;">S.No</th>
+                                <th>District</th>
                                 <th>Newspaper Date</th>
                                 <th>Newspaper</th>
                                 <th>Edit/Update</th>
@@ -55,7 +62,14 @@
                                         {{rowIndex+1}}
                                     </span>
                                 </td>
-
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        District:
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_districtname}}
+                                    </span>
+                                </td>
                                 <td class="td-border">
                                     <span class="p-column-title">
                                         Newspaper date :

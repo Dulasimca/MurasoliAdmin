@@ -90,35 +90,36 @@ export class FlashNewsEntryComponent implements OnInit {
         if (res.Table.length !== 0) {
           this.flashNewsData = res.Table;
           res.Table.forEach((i: any) => {
-            i.incidentdate = this._datePipe.transform(i.incidentdate, 'dd-MM-yyyy')
+            i.idate = this._datePipe.transform(i.g_incidentdate, 'dd-MM-yyyy')
           })
-        } else{
+        } else {
           this.messageService.clear();
           this.messageService.add({
             key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
             summary: ResponseMessage.SUMMARY_WARNING, detail: ResponseMessage.NoRecordMessage
           })
         }
-      } else{
+      } else {
         this.messageService.clear();
-          this.messageService.add({
-            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
-            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
-          });
+        this.messageService.add({
+          key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+          summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+        });
       }
     })
   }
 
   onEdit(rowData: any) {
-    this.Id = rowData.g_slno,
-      this.date = new Date(rowData.g_incidentdate),
-      this.location = rowData.g_location,
-      this.newsDetail = rowData.g_newsdetails,
-      this.newsTamilDetail = rowData.g_newsdetailstamil
+    this.Id = rowData.g_slno;
+    this.date = new Date(rowData.g_incidentdate);
+    console.log(this.date)
+    this.location = rowData.g_location;
+    this.newsDetail = rowData.g_newsdetails;
+    this.newsTamilDetail = rowData.g_newsdetailstamil;
   }
 
   Clear() {
-    this.location = '';
+    this.location = null;
     this.newsDetail = null;
     this.Id = 0;
     this.date = null;

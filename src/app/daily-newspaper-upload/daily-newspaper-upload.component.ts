@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { MessageService, SelectItem } from 'primeng/api';
 import { ResponseMessage } from '../Common-Modules/messages';
 import { PathConstants } from '../Common-Modules/Pathconstants';
 import { RestAPIService } from '../Services/restApi.service';
@@ -18,6 +18,9 @@ export class DailyNewspaperUploadComponent implements OnInit {
   public formData = new FormData();
   FileName: any;
   slNo: any;
+  districts?: any;
+  districtOptions: SelectItem[] = [];
+  district: any;
   @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
 
 
@@ -26,6 +29,9 @@ export class DailyNewspaperUploadComponent implements OnInit {
   ngOnInit(): void {
     this.onView();
     this.slNo = 0;
+    this.restApiService.get(PathConstants.DistrictMaster_Get).subscribe(res => {
+      this.districts = res.Table
+    })
   }
 
 
@@ -46,10 +52,24 @@ export class DailyNewspaperUploadComponent implements OnInit {
     return filenameWithExtn;
   }
 
+  onSelect(value: any) {
+    let districtSelection: any = [];
+    switch (value) {
+      case 'D':
+        this.districts.forEach((d:any) => {
+          districtSelection.push({ label: d.g_districtname, value: d.g_districtid });
+        })
+        this.districtOptions = districtSelection;
+        // this.districtOptions.unshift({ label: '-select-', value: null });
+        break;
+      }
+    }
+
 
   onSave() {
     const params = {
       'id': this.slNo,
+      'dsitrict': this.district,
       'newspaperdate': this.date,
       'filename': this.FileName,
       'flag': true
