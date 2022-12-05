@@ -29,7 +29,7 @@ export class StateMasterEntryComponent implements OnInit {
     //update
     if (this.Id !== 0) {
       const values = {
-        'u_statecode': this.Id,
+        'u_stateid': this.Id,
         'u_statenametamil': this.stateNameTamil,
         'u_statename': this.stateName,
         'flag': (this.selectedType == 1) ? true : false
@@ -44,7 +44,7 @@ export class StateMasterEntryComponent implements OnInit {
     else {
       //save
       const params = {
-        'statecode': this.Id,
+        'stateid': this.Id,
         'statename': this.stateName,
         'statenametamil': this.stateNameTamil,
         'Flag': (this.selectedType == 1) ? true : false
