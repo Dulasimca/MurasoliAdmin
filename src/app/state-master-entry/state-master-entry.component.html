@@ -17,7 +17,13 @@
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input type="text" pInputText [(ngModel)]="stateName" />
-                                    <label for="float-input">State Name</label>
+                                    <label for="float-input">State Name(English)</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="stateNameTamil" />
+                                    <label for="float-input">State Name(தமிழில்)</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3" style="padding: 15px">
@@ -40,7 +46,8 @@
                             <tr>
                                 <th style="width: 50px;">S.No</th>
                                 <th>State Code</th>
-                                <th>State</th>
+                                <th>State(English)</th>
+                                <th>State(Tamil)</th>
                                 <th>Active/Inactive</th>
                                 <th>Edit/Update</th>
                             </tr>
@@ -70,6 +77,14 @@
                                     </span>
                                     <span style="text-align: end;">
                                         {{rowData.g_statename}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        State Name :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_statenametamil}}
                                     </span>
                                 </td>
                                 <td class="td-border">

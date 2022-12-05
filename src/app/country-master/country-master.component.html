@@ -16,7 +16,13 @@
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input type="text" pInputText [(ngModel)]="countryName" />
-                                    <label for="float-input">Country Name</label>
+                                    <label for="float-input">Country Name(English)</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="countryNameTamil" />
+                                    <label for="float-input">Country Name(தமிழில்)</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3" style="padding: 15px">
@@ -39,7 +45,8 @@
                             <tr>
                                 <th style="width: 50px;">S.No</th>
                                 <th>Country Code</th>
-                                <th>Country</th>
+                                <th>Country(English)</th>
+                                <th>Country(Tamil)</th>
                                 <th>Active/Inactive</th>
                                 <th>Edit/Update</th>
                             </tr>
@@ -69,6 +76,14 @@
                                     </span>
                                     <span style="text-align: end;">
                                         {{rowData.g_countryname}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Country Name :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_countrynametamil}}
                                     </span>
                                 </td>
                                 <td class="td-border">

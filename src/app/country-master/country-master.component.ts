@@ -15,6 +15,7 @@ export class CountryMasterComponent implements OnInit {
   countryName: any;
   selectedType: any;
   countryId: any;
+  countryNameTamil: any;
   Countrydata: any[] = [];
 
   constructor(private restApiService: RestAPIService, private messageService: MessageService) { }
@@ -29,7 +30,7 @@ export class CountryMasterComponent implements OnInit {
     if (this.countryId !== 0) {
       const values = {
         'u_countrycode': this.countryId,
-        // 'u_districtid': this.districtId,
+        'u_countrynametamil': this.countryNameTamil,
         'u_countryname': this.countryName,
         'flag': (this.selectedType == 1) ? true : false
       }
@@ -50,6 +51,7 @@ export class CountryMasterComponent implements OnInit {
       const params = {
         'countrycode': this.countryId,
         'countryname': this.countryName,
+        'countrynametamil': this.countryNameTamil,
         'flag': (this.selectedType == 1) ? true : false
       }
       this.restApiService.post(PathConstants.CountryMaster_Post, params).subscribe((res: any) => {
@@ -83,8 +85,8 @@ export class CountryMasterComponent implements OnInit {
   onEdit(rowData: any) {
     this.countryId = rowData.g_countryid,
       this.countryName = rowData.g_countryname,
+      this.countryNameTamil = rowData.g_countrynametamil,
       this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
-
   }
 
   onView() {
@@ -98,6 +100,7 @@ export class CountryMasterComponent implements OnInit {
   }
   Clear() {
     this.countryName = null;
+    this.countryNameTamil = null;
 
   }
 

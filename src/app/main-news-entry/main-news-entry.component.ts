@@ -202,9 +202,7 @@ export class MainNewsEntryComponent implements OnInit {
         'u_newsshort': this.newsShort,
         'u_newstamilshort': this.newsTamilShort,
         'u_flag': true
-
       }
-      console.log('1', this.incidentDate)
 
       this.restApiService.post(PathConstants.MainNewsEntry_Update, params).subscribe(res => {
         if (res) {
@@ -226,6 +224,7 @@ export class MainNewsEntryComponent implements OnInit {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
           res.Table.forEach((i: any) => {
+            i.idate = this.datePipe.transform(i.g_incidentdate, 'dd-MM-yyyy')
             i.url = 'assets/layout/Documents/' + i.g_image;
             i.g_priorityname = (i.g_priority === 0) ? 'Low' : (i.g_priority === 1) ? 'Medium' : (i.g_priority === 2) ? 'High' : '-';
             i.g_displaysidename = (i.g_displayside === 0) ? 'Left' : (i.g_displayside === 1) ? 'Right' : (i.g_displayside === 2) ? 'Center' : '-';
@@ -242,32 +241,15 @@ export class MainNewsEntryComponent implements OnInit {
     })
   }
 
-
-  // translate(value: number) {
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Headers': 'Content-Type',
-  //     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-  //     'Authorization': 'Bearer szdp79a2kz4wh4frjzuqu4sz6qeth8m3',
-  //   });
-  //   const data = {
-  //     'topic': 'God is Great',
-  //     'detail': 'Successful',
-  //     'lang': 0
-  //   };
-  //   this.http.post('http://192.168.1.11:5000/translate', data, {headers}).subscribe((response: any) => {
-  //     console.log('res',response)
-
-  //   })
-  // }
-
   onEdit(rowData: any) {
     this.Id = rowData.g_slno,
-      this.newsTitle = rowData.g_newstitle,
+      this.incidentDate = new Date(rowData.g_incidentdate);
+    this.newsTitle = rowData.g_newstitle,
       this.newsTamilTitle = rowData.g_newstitletamil,
       this.newsDetail = rowData.g_details,
       this.newsTamilDetail = rowData.g_newsdetailstamil,
+      this.newsShort = rowData.g_newsshort,
+      this.newsTamilShort = rowData.g_newsshorttamil,
       this.priority = rowData.g_priority,
       this.priorityOptions = [{ label: rowData.g_priorityname, value: rowData.g_priority }]
     this.display = rowData.g_displayside,

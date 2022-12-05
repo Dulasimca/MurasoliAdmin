@@ -17,6 +17,7 @@ export class StateMasterEntryComponent implements OnInit {
   Id: number = 0;
   Statedata: any[] = [];
   slno: any;
+  stateNameTamil: any;
 
   constructor(private restApiService: RestAPIService,private messageService: MessageService) { }
 
@@ -25,12 +26,11 @@ export class StateMasterEntryComponent implements OnInit {
   }
 
   onSave() {
-    
     //update
     if (this.Id !== 0) {
       const values = {
         'u_statecode': this.Id,
-        // 'u_districtid': this.districtId,
+        'u_statenametamil': this.stateNameTamil,
         'u_statename': this.stateName,
         'flag': (this.selectedType == 1) ? true : false
       }
@@ -46,6 +46,7 @@ export class StateMasterEntryComponent implements OnInit {
       const params = {
         'statecode': this.Id,
         'statename': this.stateName,
+        'statenametamil': this.stateNameTamil,
         'Flag': (this.selectedType == 1) ? true : false
       }
       this.restApiService.post(PathConstants.StateMaster_Post, params).subscribe((res: any) => {
@@ -77,9 +78,9 @@ export class StateMasterEntryComponent implements OnInit {
   }
 
   onEdit(rowData: any) {
-    this.auto();
     this.Id = rowData.g_stateid,
       this.stateName = rowData.g_statename,
+      this.stateNameTamil = rowData.g_statenametamil,
       this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
   }
 
@@ -104,15 +105,7 @@ export class StateMasterEntryComponent implements OnInit {
       }
     })
   }
-  auto() {
-    if(this.Statedata.length >= 0) {
-      this.slno = this.Statedata.length + 1
-      console.log('2',this.slno)
-    } else {
-      
-    }
-
-  }
+ 
   clear() {
     this.stateName = null;
     this.selectedType = null;

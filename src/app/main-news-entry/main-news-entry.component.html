@@ -38,11 +38,11 @@
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-dropdown name="_priority" [options]="priorityOptions" [(ngModel)]="priority"
-                                        (onClick)="onSelect('P')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                            (onClick)="onSelect('P')" [autoDisplayFirst]="false" [required]="true">
+                                        </p-dropdown>
                                         <label for="_priority">Priority Level</label>
                                     </span>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-12">
@@ -66,20 +66,20 @@
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
-                                        <textarea name="_newstamilshort" pInputTextarea [autoResize]="true" placeholder="max 100characters only"
-                                            [(ngModel)]="newsTamilShort" required></textarea>
+                                        <textarea name="_newstamilshort" pInputTextarea [autoResize]="true"
+                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort"
+                                            required></textarea>
                                         <label for="_newstamilshort">News Details(தமிழில் சுருக்கமாக )</label>
                                     </span>
                                 </div>
-
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-dropdown name="_display" [options]="displayOptions" [(ngModel)]="display"
-                                        (onClick)="onSelect('DP')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                            (onClick)="onSelect('DP')" [autoDisplayFirst]="false" [required]="true">
+                                        </p-dropdown>
                                         <label for="_display">Display side</label>
                                     </span>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-12">
@@ -114,7 +114,6 @@
                                         <label for="_district">District</label>
                                     </span>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-12">
@@ -143,7 +142,6 @@
                     <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"
                         [disabled]="(!f.valid)"></button>&nbsp;
                     <button pButton type="button" icon="pi pi-fw pi-eye" label="View" (click)="onView()"></button>
-
                 </div>
                 <div *ngIf="showTable" class="col-12" style="margin-bottom: 2%">
                     <p-table [value]="mainNewsdata" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="40"
@@ -154,8 +152,10 @@
                                 <th>Incident Date</th>
                                 <th>News Topic</th>
                                 <th>News Topic(Tamil)</th>
-                                <th>News Details</th>
-                                <th>News Details(Tamil)</th>
+                                <!-- <th>News Short</th>
+                                <th>News Short(Tamil)</th> -->
+                                <!-- <th>News Details</th>
+                                <th>News Details(Tamil)</th> -->
                                 <th>Display Side</th>
                                 <th>Priority Level</th>
                                 <th>Location</th>
@@ -181,7 +181,7 @@
                                         Incident date :
                                     </span>
                                     <span style="text-align: end;">
-                                        {{rowData.g_incidentdate}}
+                                        {{rowData.idate}}
                                     </span>
                                 </td>
                                 <td class="td-border">
@@ -200,7 +200,23 @@
                                         {{rowData.g_newstitletamil}}
                                     </span>
                                 </td>
+                                <!-- <td class="td-border">
+                                    <span class="p-column-title">
+                                        News Short :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_newsshort}}
+                                    </span>
+                                </td>
                                 <td class="td-border">
+                                    <span class="p-column-title">
+                                        News Short(Tamil):
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_newsshorttamil}}
+                                    </span>
+                                </td> -->
+                                <!-- <td class="td-border">
                                     <span class="p-column-title">
                                         News Details:
                                     </span>
@@ -215,7 +231,7 @@
                                     <span style="text-align: end;">
                                         {{rowData.g_newsdetailstamil}}
                                     </span>
-                                </td>
+                                </td> -->
                                 <td class="td-border">
                                     <span class="p-column-title">
                                         Display Side :

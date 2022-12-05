@@ -85,6 +85,11 @@ export class FlashNewsEntryComponent implements OnInit {
   }
 
   onView() {
+    this.messageService.clear();
+    this.messageService.add({
+      key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
+      summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.UpdateMsg
+    });
     this.restApiService.get(PathConstants.FlashNewsEntry_Get).subscribe(res => {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
@@ -126,20 +131,4 @@ export class FlashNewsEntryComponent implements OnInit {
     this.newsTamilDetail = null;
   }
 
-  //   function ValidateEmail(inputText)
-  // {
-  // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  // if(inputText.value.match(mailformat))
-  // {
-  // alert("Valid email address!");
-  // document.form1.text1.focus();
-  // return true;
-  // }
-  // else
-  // {
-  // alert("You have entered an invalid email address!");
-  // document.form1.text1.focus();
-  // return false;
-  // }
-  // }
 }

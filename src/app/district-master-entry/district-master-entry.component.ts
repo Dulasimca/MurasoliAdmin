@@ -15,6 +15,7 @@ export class DistrictMasterEntryComponent implements OnInit {
   districtName: any;
   selectedType: any;
   districtId: any;
+  districtTamilName: any;
   Districtdata: any[] = [];
 
   constructor(private restApiService: RestAPIService, private messageService: MessageService) { }
@@ -28,27 +29,50 @@ export class DistrictMasterEntryComponent implements OnInit {
     //update
     if (this.districtId !== 0) {
       const values = {
-        'u_districtcode': this.districtId,
-        // 'u_districtid': this.districtId,
+        'u_districtid': this.districtId,
+        'u_districtnametamil': this.districtTamilName,
         'u_districtname': this.districtName,
-        'flag': (this.selectedType == 1) ? true : false
+        'u_flag': (this.selectedType == true) ? true : false
       }
       this.restApiService.post(PathConstants.DistrictMaster_Update, values).subscribe(res => {
         if (res) {
           this.onView();
+          this.onClear();
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
+            summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.UpdateMsg
+          });
         }
-      })
+          else {
+            this.messageService.clear();
+            this.messageService.add({
+              key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+              summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+            });
+          }
+        }, (err: HttpErrorResponse) => {
+          if (err.status === 0 || err.status === 400) {
+            this.messageService.clear();
+            this.messageService.add({
+              key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+              summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+            })
+          }
+        })
     }
     else {
       //save
       const params = {
         'districtcode': this.districtId,
         'districtname': this.districtName,
-        'flag': (this.selectedType == 1) ? true : false
+        'districttamilname': this.districtTamilName,
+        'flag': this.selectedType
       }
       this.restApiService.post(PathConstants.DistrictMaster_Post, params).subscribe((res: any) => {
         if (res) {
           this.onView();
+          this.onClear();
           this.messageService.clear();
           this.messageService.add({
             key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
@@ -76,7 +100,7 @@ export class DistrictMasterEntryComponent implements OnInit {
   onEdit(rowData: any) {
     this.districtId = rowData.g_districtid,
       this.districtName = rowData.g_districtname,
-      this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
+      this.selectedType = rowData.g_flag ;
 
   }
 
@@ -85,7 +109,7 @@ export class DistrictMasterEntryComponent implements OnInit {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
           res.Table.forEach((i: any) => {
-            i.flag = (i.flag === true) ? 'Active' : 'Inactive'
+            i.flagstatus = (i.g_flag === true) ? 'Active' : 'Inactive'
           })
           this.Districtdata = res.Table;
         } else {
@@ -102,4 +126,8 @@ export class DistrictMasterEntryComponent implements OnInit {
     })
   }
 
+  onClear() {
+    this.districtId = 0;
+    this.districtName = '';
+  }
 }

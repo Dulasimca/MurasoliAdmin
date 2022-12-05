@@ -1,6 +1,4 @@
-<!-- <div  class="col-10 md:col-3 lg:col-2 no-padding">
-    <app-menu></app-menu>
-  </div> -->
+ 
 <div class="col-12 md:col-12 lg:col-12">
     <div class="grid to-center">
         <div class="col-11 md:col-10 lg:col-10 box-shadow no-pad">
@@ -16,7 +14,13 @@
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input type="text" pInputText [(ngModel)]="districtName" />
-                                    <label for="float-input">District Name</label>
+                                    <label for="float-input">District Name(English)</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="districtTamilName" />
+                                    <label for="float-input">District Name(தமிழில்)</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3" style="padding: 15px">
@@ -27,22 +31,25 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                 </div>
                 <div class="col-12 div-txt-align-ct">
                     <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"
                         [disabled]="(!selectedType || !districtName)"></button>
-                    <!-- <button pButton type="button" icon="pi pi-fw pi-eye" label="View" (click)="onView()"></button> -->
                 </div>
                 <div class="col-12" style="margin-bottom: 2%">
                     <p-table [value]="Districtdata" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="40"
                         [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll">
                         <ng-template pTemplate="header">
                             <tr>
-                                <th style="width: 50px;">S.No</th>
-                                <th>District Code</th>
-                                <th>District</th>
+                                <th style="width: 50px;" rowspan="2">S.No</th>
+                                <th rowspan="2">District Code</th>
+                                <th colspan="3">district</th>
+                                <th rowspan="2">Edit/Update</th>
+                            </tr>
+                            <tr> 
+                                <th>District(English)</th>
+                                <th>District(Tamil)</th>
                                 <th>Active/Inactive</th>
-                                <th>Edit/Update</th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
@@ -74,10 +81,18 @@
                                 </td>
                                 <td class="td-border">
                                     <span class="p-column-title">
+                                        District Name :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_districtnametamil}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
                                         Active/Inactive :
                                     </span>
                                     <span style="text-align: end;">
-                                        {{rowData.g_flag}}
+                                        {{rowData.flagstatus}}
                                     </span>
                                 </td>
                                 <td>
@@ -94,4 +109,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>  
