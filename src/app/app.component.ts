@@ -24,17 +24,7 @@ constructor(private _router: Router) {
 }
 }
 
-// ngAfterViewChecked(): void {
-//   let details = navigator.userAgent;
-//   let regexp = /android|iphone|kindle|ipad/i;
-//     let isMobileDevice = regexp.test(details);
-//     console.log('dv', isMobileDevice)
-// }
-
-// toggleMenu(value: boolean) {
-//   this.showMenu = value;
-//   console.log('appcp', this.showMenu, value)
-// }
+ 
 
  
 

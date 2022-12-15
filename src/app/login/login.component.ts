@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   showPswd: boolean = true;
   loginData: any[] = [];
 
-
   constructor(private route: Router, private restApiService: RestAPIService, private messageService: MessageService, private _authService: AuthService) {
 
   }
@@ -26,22 +25,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this._authService.logout();
     this.restApiService.get(PathConstants.Users_Get).subscribe(res => {
-
       this.loginData = res.Table;
     })
   }
 
   onShowPswd() {
-    console.log('1')
     var inputValue = (<HTMLInputElement>document.getElementById('pswd'));
     if (inputValue.type === 'password') {
       inputValue.type = 'text';
-      console.log('2')
       this.showPswd = !this.showPswd;
     } else {
       this.showPswd = !this.showPswd;
       inputValue.type = 'password';
-      console.log('3')
     }
   }
 
@@ -49,11 +44,9 @@ export class LoginComponent implements OnInit {
     this.loginData.forEach((i: any) => {
       if (i.g_username === this.username && i.g_password === this.password)
        {
-        console.log('success')
         this._authService.login();
         this.route.navigate(['/dashboard'])
       } else {
-        console.log('No match')
         this.messageService.clear();
         this.messageService.add({
           key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
@@ -61,19 +54,14 @@ export class LoginComponent implements OnInit {
         })
       }
     })
-    // this.login();
   }
 
-  login() {
-    if (this.username !== '' && this.password !== '') {
-      localStorage.setItem('UserInfo', JSON.stringify(this.username));
-      console.log('q', this.username)
-      const user = localStorage.getItem('UserInfo');
-
-      console.log('u', user)
-
-    }
-  }
+  // login() {
+  //   if (this.username !== '' && this.password !== '') {
+  //     localStorage.setItem('UserInfo', JSON.stringify(this.username));
+  //     const user = localStorage.getItem('UserInfo');
+  //   }
+  // }
 
 }
 

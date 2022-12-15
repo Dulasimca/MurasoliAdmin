@@ -33,7 +33,6 @@ export class DailynewEntryComponent implements OnInit {
   newsTamilDetail: any;
   Id: any;
   dailyNewsdata: any[] = [];
-  public formData = new FormData();
   fileName: any;
   districts: any[] = [];
   countries: any[] = [];
@@ -41,13 +40,9 @@ export class DailynewEntryComponent implements OnInit {
   showDialog: boolean = false;
   NewsImage: string = '';
   showTable: boolean = false;
+  public formData = new FormData();
   @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
   @ViewChild('f', { static: false }) dailynewsForm!: NgForm;
-  // @ViewChild('fileselector', { static: false }) uploadfilename!: ElementRef;
-
-
-  // @ViewChild('file', { static: false }) _input: InputText;
-
 
   constructor(private restApiService: RestAPIService, private messageService: MessageService,
     private http: HttpClient, private _d: DomSanitizer) { }
@@ -172,7 +167,7 @@ export class DailynewEntryComponent implements OnInit {
           })
         }
       })
-    }
+    } //update
     else {
       const params = {
         'u_slno': this.Id,
@@ -203,6 +198,7 @@ export class DailynewEntryComponent implements OnInit {
       })
     }
   }
+
   onView() {
     this.showTable = true;
     this.restApiService.get(PathConstants.DailyNewsEntry_Get).subscribe(res => {
@@ -225,25 +221,6 @@ export class DailynewEntryComponent implements OnInit {
       }
     })
   }
-
-  // translate(value: number) {
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': '*',
-  //     'Access-Control-Allow-Headers': 'Content-Type',
-  //     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-  //     'Authorization': 'Bearer szdp79a2kz4wh4frjzuqu4sz6qeth8m3',
-  //   });
-  //   const data = {
-  //     'topic': 'God is Great',
-  //     'detail': 'Successful',
-  //     'lang': 0
-  //   };
-  //   this.http.post('http://192.168.1.11:5000/translate', data, {headers}).subscribe((response: any) => {
-  //     console.log('res',response)
-
-  //   })
-  // }
 
   onEdit(rowData: any) {
     this.Id = rowData.g_slno;

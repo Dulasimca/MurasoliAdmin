@@ -37,7 +37,6 @@ export class MainNewsEntryComponent implements OnInit {
   states: any;
   countries: any;
   mainNewsdata: any[] = [];
-  public formData = new FormData();
   FileName: any;
   showDialog: boolean = false;
   NewsImage: any;
@@ -46,6 +45,7 @@ export class MainNewsEntryComponent implements OnInit {
   incidentDate: any;
   newsTamilShort: string = '';
   newsShort: string = '';
+  public formData = new FormData();
   @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
   @ViewChild('f', { static: false }) mainNewsForm!: NgForm;
 
@@ -76,7 +76,6 @@ export class MainNewsEntryComponent implements OnInit {
     switch (value) {
       case 'DP':
         this.displayOptions = [
-          // {label: '-Select', value: null},
           { label: 'Left', value: 0 },
           { label: 'Right', value: 1 },
           { label: 'Center', value: 2 },
@@ -85,7 +84,6 @@ export class MainNewsEntryComponent implements OnInit {
         break;
       case 'P':
         this.priorityOptions = [
-          // {label: '', value: null},
           { label: 'Low', value: 0 },
           { label: 'Meduim', value: 1 },
           { label: 'High', value: 2 }
@@ -115,6 +113,7 @@ export class MainNewsEntryComponent implements OnInit {
     }
   }
 
+  //fileupload
   public uploadFile = (event: any) => {
     this.formData = new FormData()
     let fileToUpload: any = <File>event.target.files[0];
@@ -125,8 +124,8 @@ export class MainNewsEntryComponent implements OnInit {
     const filename = fileToUpload.name + '^' + folderName + '^' + filenameWithExtn;
     this.formData.append('file', fileToUpload, filename);
     this.http.post(this.restApiService.BASEURL + PathConstants.FileUpload_Post, this.formData)
-    .subscribe((event: any) => {
-      this.FileName = event.item2;
+      .subscribe((event: any) => {
+        this.FileName = event.item2;
       }
       );
     return filenameWithExtn;
@@ -138,6 +137,7 @@ export class MainNewsEntryComponent implements OnInit {
   }
 
   onSave() {
+    //post
     if (this.Id === 0) {
       const params = {
         'slno': this.Id,
@@ -182,7 +182,7 @@ export class MainNewsEntryComponent implements OnInit {
           })
         }
       })
-    }
+    } //update
     else {
       const params = {
         'u_slno': this.Id,
@@ -241,39 +241,28 @@ export class MainNewsEntryComponent implements OnInit {
   }
 
   onEdit(rowData: any) {
-    this.Id = rowData.g_slno,
-      this.incidentDate = new Date(rowData.g_incidentdate);
-    this.newsTitle = rowData.g_newstitle,
-      this.newsTamilTitle = rowData.g_newstitletamil,
-      this.newsDetail = rowData.g_details,
-      this.newsTamilDetail = rowData.g_newsdetailstamil,
-      this.newsShort = rowData.g_newsshort,
-      this.newsTamilShort = rowData.g_newsshorttamil,
-      this.priority = rowData.g_priority,
-      this.priorityOptions = [{ label: rowData.g_priorityname, value: rowData.g_priority }]
-    this.display = rowData.g_displayside,
-      this.displayOptions = [{ label: rowData.g_displaysidename, value: rowData.g_displayside }]
-    this.location = rowData.g_location,
-      this.district = rowData.g_district;
+    this.Id = rowData.g_slno;
+    this.incidentDate = new Date(rowData.g_incidentdate);
+    this.newsTitle = rowData.g_newstitle;
+    this.newsTamilTitle = rowData.g_newstitletamil;
+    this.newsDetail = rowData.g_details;
+    this.newsTamilDetail = rowData.g_newsdetailstamil;
+    this.newsShort = rowData.g_newsshort;
+    this.newsTamilShort = rowData.g_newsshorttamil;
+    this.priority = rowData.g_priority;
+    this.priorityOptions = [{ label: rowData.g_priorityname, value: rowData.g_priority }];
+    this.display = rowData.g_displayside;
+    this.displayOptions = [{ label: rowData.g_displaysidename, value: rowData.g_displayside }];
+    this.location = rowData.g_location;
+    this.district = rowData.g_district;
     this.districtOptions = [{ label: rowData.g_districtname, value: rowData.g_district }];
-    this.state = rowData.g_state,
-      this.stateOptions = [{ label: rowData.g_statename, value: rowData.g_state }];
-    this.country = rowData.g_country,
-      this.countryOptions = [{ label: rowData.g_countryname, value: rowData.g_country }];
+    this.state = rowData.g_state;
+    this.stateOptions = [{ label: rowData.g_statename, value: rowData.g_state }];
+    this.country = rowData.g_country;
+    this.countryOptions = [{ label: rowData.g_countryname, value: rowData.g_country }];
   }
 
   clear() {
-    // this.newsDetail = '';
-    // this.newsTitle = null;
-    // this.displayOptions = [];
-    // this.priorityOptions = [];
-    // this.districtOptions = [];
-    // this.stateOptions = [];
-    // this.countryOptions = [];
-    // this.location = null;
-    // this.filename = '';
-    // this.newsTamilDetail = '';
-    // this.newsTamilTitle = '';
     this.fileSelector.nativeElement.value = null;
     this.mainNewsForm.reset();
   }

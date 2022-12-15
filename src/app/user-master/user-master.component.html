@@ -1,6 +1,3 @@
-<!-- <div  class="col-10 md:col-3 lg:col-2 no-padding">
-    <app-menu></app-menu>
-  </div> -->
 <div class="col-12 md:col-12 lg:col-12">
     <div class="grid to-center">
         <div class="col-11 md:col-10 lg:col-10 box-shadow no-pad">
@@ -40,101 +37,85 @@
                         </div>
                     </div>
                     <div class="col-12 div-txt-align-ct">
-                        <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()" [disabled]="(!selectedType || !username || !email || !password)"></button>
+                        <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"
+                            [disabled]="(!selectedType || !username || !email || !password)"></button>
                     </div>
                     <div class="col-12" style="margin-bottom: 2%">
-                    <p-table #usermaster [value]="userdata" styleClass="p-datatable-gridlines" [paginator]="true"
-                        [rows]="40" [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll" [filterDelay]="0"
-                        [globalFilterFields]="['UserName', 'Role']">
-                        <!-- <ng-template pTemplate="caption">
-                                            <div class="table-header">
-                                                <div class="p-grid">
-                                                    <div class="p-col-6 p-md-6 p-lg-10 txt-end">
-                                                        <span>Search by Username / Role.</span>
-                                                    </div>
-                                                    <div class="p-col-4 p-md-4 p-lg-2">
-                                                        <span class="p-input-icon-left">
-                                                            <i class="pi pi-search"></i>
-                                                            <input pInputText type="text" size="30"
-                                                                (input)="usermaster.filterGlobal($event.target.value, 'contains')"
-                                                                placeholder="Global Search" />
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template> -->
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th style="width: 2cm;">S.No</th>
-                                <th>Role</th>
-                                <th>Username</th>
-                                <th>Email Id</th>
-                                <th>Password</th>
-                                <th>Status</th>
-                                <th>Edit/Update</th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-                            <tr class="tr-border">
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        S.No :
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowIndex+1}}
-                                    </span>
-                                </td>
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        Role :
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_roleid}}
-                                    </span>
-                                </td>
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        Username :
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_username}}
-                                    </span>
-                                </td>
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        Email Id :
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_emailid}}
-                                    </span>
-                                </td>
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        Password :
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_password}}
-                                    </span>
-                                </td>
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        Status :
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_flag}}
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="p-column-title">
-                                        Edit/Update :
-                                    </span>
-                                    <span><button icon="pi pi-pencil" pButton type="button" pTooltip="Tap to edit"  
-                                            (click)="onEdit(rowData)">
-                                        </button></span>
-                                </td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
+                        <p-table #usermaster [value]="userdata" styleClass="p-datatable-gridlines" [paginator]="true"
+                            [rows]="40" [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll" [filterDelay]="0"
+                            [globalFilterFields]="['UserName', 'Role']">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="width: 2cm;">S.No</th>
+                                    <th>Role</th>
+                                    <th>Username</th>
+                                    <th>Email Id</th>
+                                    <th>Password</th>
+                                    <th>Status</th>
+                                    <th>Edit/Update</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                                <tr class="tr-border">
+                                    <td class="td-border">
+                                        <span class="p-column-title">
+                                            S.No :
+                                        </span>
+                                        <span style="text-align: end;">
+                                            {{rowIndex+1}}
+                                        </span>
+                                    </td>
+                                    <td class="td-border">
+                                        <span class="p-column-title">
+                                            Role :
+                                        </span>
+                                        <span style="text-align: end;">
+                                            {{rowData.g_roleid}}
+                                        </span>
+                                    </td>
+                                    <td class="td-border">
+                                        <span class="p-column-title">
+                                            Username :
+                                        </span>
+                                        <span style="text-align: end;">
+                                            {{rowData.g_username}}
+                                        </span>
+                                    </td>
+                                    <td class="td-border">
+                                        <span class="p-column-title">
+                                            Email Id :
+                                        </span>
+                                        <span style="text-align: end;">
+                                            {{rowData.g_emailid}}
+                                        </span>
+                                    </td>
+                                    <td class="td-border">
+                                        <span class="p-column-title">
+                                            Password :
+                                        </span>
+                                        <span style="text-align: end;">
+                                            {{rowData.g_password}}
+                                        </span>
+                                    </td>
+                                    <td class="td-border">
+                                        <span class="p-column-title">
+                                            Status :
+                                        </span>
+                                        <span style="text-align: end;">
+                                            {{rowData.g_flag}}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="p-column-title">
+                                            Edit/Update :
+                                        </span>
+                                        <span><button icon="pi pi-pencil" pButton type="button" pTooltip="Tap to edit"
+                                                (click)="onEdit(rowData)">
+                                            </button></span>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
                     </div>
                 </div>
             </div>

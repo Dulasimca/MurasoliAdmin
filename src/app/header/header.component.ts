@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   username: any;
 
   constructor(private route: Router) {
-
   }
 
   ngOnInit(): void {
@@ -33,12 +32,6 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-
-  // toggle($event: any) {
-  //   const user = localStorage.getItem('UserInfo');
-  //   this.username = user;
-  //   console.log('y', user)
-  // }
 
   logout() {
     this.route.navigate(['/login-page'])

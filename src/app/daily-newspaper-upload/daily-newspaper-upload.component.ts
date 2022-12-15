@@ -34,7 +34,6 @@ export class DailyNewspaperUploadComponent implements OnInit {
     })
   }
 
-
   public uploadFile = (event: any) => {
     this.formData = new FormData()
     let fileToUpload: any = <File>event.target.files[0];
@@ -56,14 +55,14 @@ export class DailyNewspaperUploadComponent implements OnInit {
     let districtSelection: any = [];
     switch (value) {
       case 'D':
-        this.districts.forEach((d:any) => {
+        this.districts.forEach((d: any) => {
           districtSelection.push({ label: d.g_districtname, value: d.g_districtid });
         })
         this.districtOptions = districtSelection;
         // this.districtOptions.unshift({ label: '-select-', value: null });
         break;
-      }
     }
+  }
 
 
   onSave() {
@@ -75,29 +74,29 @@ export class DailyNewspaperUploadComponent implements OnInit {
       'flag': true
     }
     this.restApiService.post(PathConstants.DailyNewsPaper_Post, params).subscribe(res => {
-      if(res) {
+      if (res) {
         this.onView();
-      this.Clear();
-          this.messageService.clear();
-          this.messageService.add({
-            key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
-            summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.SuccessMessage
-          });
-        }else {
-          this.messageService.clear();
-          this.messageService.add({
-            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
-            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
-          });
-        }
-      }, (err: HttpErrorResponse) => {
-        if (err.status === 0 || err.status === 400) {
-          this.messageService.clear();
-          this.messageService.add({
-            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
-            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
-          })
-        }
+        this.Clear();
+        this.messageService.clear();
+        this.messageService.add({
+          key: 't-msg', severity: ResponseMessage.SEVERITY_SUCCESS,
+          summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.SuccessMessage
+        });
+      } else {
+        this.messageService.clear();
+        this.messageService.add({
+          key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+          summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+        });
+      }
+    }, (err: HttpErrorResponse) => {
+      if (err.status === 0 || err.status === 400) {
+        this.messageService.clear();
+        this.messageService.add({
+          key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+          summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+        })
+      }
     })
   }
 
@@ -105,9 +104,8 @@ export class DailyNewspaperUploadComponent implements OnInit {
     this.restApiService.get(PathConstants.DailyNewsPaper_Get).subscribe(res => {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
-          res.Table.forEach((i:any) => {
-           i.newspaperdate = this.datePipe.transform(i.newspaperdate,'dd-MM-yyyy')
-            console.log('1',this.date)
+          res.Table.forEach((i: any) => {
+            i.newspaperdate = this.datePipe.transform(i.newspaperdate, 'dd-MM-yyyy')
           })
           this.NewsData = res.Table
         }
@@ -115,13 +113,14 @@ export class DailyNewspaperUploadComponent implements OnInit {
     })
   }
 
+  onEdit(rowData: any) {
+    this.slNo = rowData.g_id;
+    this.date = new Date(rowData.g_newspaperdate);
+  }
+
   Clear() {
     this.date = null;
     this.fileSelector.nativeElement.value = null;
   }
 
-  onEdit(rowData: any) {
-    this.slNo = rowData.g_id,
-    this.date = new Date(rowData.g_newspaperdate)
-  }
 }

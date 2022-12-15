@@ -1,6 +1,3 @@
-<!-- <div  class="col-10 md:col-3 lg:col-2 no-padding">
-    <app-menu></app-menu>
-  </div> -->
 <div class="col-12 md:col-12 lg:col-12">
     <div class="grid to-center">
         <div class="col-11 md:col-10 lg:col-10 box-shadow no-pad">
@@ -17,7 +14,8 @@
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-calendar name="_date" [(ngModel)]="incidentDate" [readonlyInput]="true"
-                                            [showIcon]="true" [autoZIndex]="true" [showTime]="true" [hourFormat]="'12'"></p-calendar>
+                                            [showIcon]="true" [autoZIndex]="true" [showTime]="true"
+                                            [hourFormat]="'12'"></p-calendar>
                                         <label for="_date">Incident Date</label>
                                     </span>
                                 </div>
@@ -56,19 +54,16 @@
                                 </div>
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
-                                        <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
                                         <textarea name="_newsshort" pInputTextarea [autoResize]="true"
                                             [(ngModel)]="newsShort" required></textarea>
                                         <label for="_newsshort">News Details(in short)</label>
                                     </span>
                                 </div>
-
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
-                                        <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
                                         <textarea name="_newstamilshort" pInputTextarea [autoResize]="true"
-                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort"
-                                            required readonly></textarea>
+                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort" required
+                                            readonly></textarea>
                                         <label for="_newstamilshort">News Details(தமிழில் சுருக்கமாக )</label>
                                     </span>
                                 </div>
@@ -86,7 +81,6 @@
                             <div class="grid">
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
-                                        <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
                                         <textarea name="_newsdetails" pInputTextarea [autoResize]="true"
                                             [(ngModel)]="newsDetail" required></textarea>
                                         <label for="_newsdetails">News Details</label>
@@ -152,10 +146,6 @@
                                 <th>Incident Date</th>
                                 <th>News Topic</th>
                                 <th>News Topic(Tamil)</th>
-                                <!-- <th>News Short</th>
-                                <th>News Short(Tamil)</th> -->
-                                <!-- <th>News Details</th>
-                                <th>News Details(Tamil)</th> -->
                                 <th>Display Side</th>
                                 <th>Priority Level</th>
                                 <th>Location</th>
@@ -200,38 +190,6 @@
                                         {{rowData.g_newstitletamil}}
                                     </span>
                                 </td>
-                                <!-- <td class="td-border">
-                                    <span class="p-column-title">
-                                        News Short :
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_newsshort}}
-                                    </span>
-                                </td>
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        News Short(Tamil):
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_newsshorttamil}}
-                                    </span>
-                                </td> -->
-                                <!-- <td class="td-border">
-                                    <span class="p-column-title">
-                                        News Details:
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_details}}
-                                    </span>
-                                </td>
-                                <td class="td-border">
-                                    <span class="p-column-title">
-                                        News Details:
-                                    </span>
-                                    <span style="text-align: end;">
-                                        {{rowData.g_newsdetailstamil}}
-                                    </span>
-                                </td> -->
                                 <td class="td-border">
                                     <span class="p-column-title">
                                         Display Side :

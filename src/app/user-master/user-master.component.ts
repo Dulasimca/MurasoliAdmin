@@ -19,6 +19,7 @@ export class UserMasterComponent implements OnInit {
   userdata: any[] = [];
   roleid: any;
   id: any;
+  
   constructor(private restapiService: RestAPIService, private messageService: MessageService) { }
 
   ngOnInit(): void {

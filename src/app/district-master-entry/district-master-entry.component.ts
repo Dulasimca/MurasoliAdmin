@@ -44,22 +44,22 @@ export class DistrictMasterEntryComponent implements OnInit {
             summary: ResponseMessage.SUMMARY_SUCCESS, detail: ResponseMessage.UpdateMsg
           });
         }
-          else {
-            this.messageService.clear();
-            this.messageService.add({
-              key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
-              summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
-            });
-          }
-        }, (err: HttpErrorResponse) => {
-          if (err.status === 0 || err.status === 400) {
-            this.messageService.clear();
-            this.messageService.add({
-              key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
-              summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
-            })
-          }
-        })
+        else {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+          });
+        }
+      }, (err: HttpErrorResponse) => {
+        if (err.status === 0 || err.status === 400) {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_ERROR,
+            summary: ResponseMessage.SUMMARY_ERROR, detail: ResponseMessage.ErrorMessage
+          })
+        }
+      })
     }
     else {
       //save
@@ -98,10 +98,9 @@ export class DistrictMasterEntryComponent implements OnInit {
   }
 
   onEdit(rowData: any) {
-    this.districtId = rowData.g_districtid,
-      this.districtName = rowData.g_districtname,
-      this.selectedType = rowData.g_flag ;
-
+    this.districtId = rowData.g_districtid;
+    this.districtName = rowData.g_districtname;
+    this.selectedType = rowData.g_flag;
   }
 
   onView() {
@@ -109,7 +108,7 @@ export class DistrictMasterEntryComponent implements OnInit {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
           res.Table.forEach((i: any) => {
-            i.flagstatus = (i.g_flag === true) ? 'Active' : 'Inactive'
+            i.flagstatus = (i.g_flag === true) ? 'Active' : 'Inactive';
           })
           this.Districtdata = res.Table;
         } else {
@@ -120,9 +119,7 @@ export class DistrictMasterEntryComponent implements OnInit {
             summary: ResponseMessage.SUMMARY_WARNING, detail: ResponseMessage.NoRecordMessage
           })
         }
-      } else {
-
-      }
+      }  
     })
   }
 

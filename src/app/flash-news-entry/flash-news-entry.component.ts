@@ -117,7 +117,6 @@ export class FlashNewsEntryComponent implements OnInit {
   onEdit(rowData: any) {
     this.Id = rowData.g_slno;
     this.date = new Date(rowData.g_incidentdate);
-    console.log(this.date)
     this.location = rowData.g_location;
     this.newsDetail = rowData.g_newsdetails;
     this.newsTamilDetail = rowData.g_newsdetailstamil;
