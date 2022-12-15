@@ -86,14 +86,13 @@ export class CountryMasterComponent implements OnInit {
     this.countryId = rowData.g_countryid,
       this.countryName = rowData.g_countryname,
       this.countryNameTamil = rowData.g_countrynametamil,
-      this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
+      this.selectedType = rowData.g_flag;
   }
 
   onView() {
     this.restApiService.get(PathConstants.CountryMaster_Get).subscribe(res => {
       res.Table.forEach((i: any) => {
-        i.flag = (i.flag === true) ? 'Active' : 'Inactive'
-        console.log(i.flag)
+        i.flagstatus = (i.g_flag === true) ? 'Active' : 'Inactive'
       })
       this.Countrydata = res.Table;
     })

@@ -49,7 +49,6 @@ export class MainNewsEntryComponent implements OnInit {
   @ViewChild('fileSelector', { static: false }) fileSelector!: ElementRef;
   @ViewChild('f', { static: false }) mainNewsForm!: NgForm;
 
-
   constructor(private restApiService: RestAPIService, private messageService: MessageService,
     private http: HttpClient, private _d: DomSanitizer, private datePipe: DatePipe) { }
 
@@ -125,9 +124,9 @@ export class MainNewsEntryComponent implements OnInit {
     var filenameWithExtn = extension;
     const filename = fileToUpload.name + '^' + folderName + '^' + filenameWithExtn;
     this.formData.append('file', fileToUpload, filename);
-    this.FileName = fileToUpload.name;
     this.http.post(this.restApiService.BASEURL + PathConstants.FileUpload_Post, this.formData)
-      .subscribe(event => {
+    .subscribe((event: any) => {
+      this.FileName = event.item2;
       }
       );
     return filenameWithExtn;

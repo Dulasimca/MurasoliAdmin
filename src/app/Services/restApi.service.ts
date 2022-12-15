@@ -9,9 +9,8 @@ import { catchError } from 'rxjs/operators';
 })
   
 export class RestAPIService {
-   //BASEURL = 'https://api.tnadw-hms.in/api/';
-  //BASEURL = 'https://adatwdapi.tessolve.com/api/';
   BASEURL = 'https://localhost:44316/api/';
+  // BASEURL = 'http://172.16.80.21:85/api/'
   
   public HttpOptions = {
     headers: new HttpHeaders({

@@ -17,7 +17,7 @@
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-calendar name="_date" [(ngModel)]="incidentDate" [readonlyInput]="true"
-                                            [showIcon]="true" [autoZIndex]="true"></p-calendar>
+                                            [showIcon]="true" [autoZIndex]="true" [showTime]="true" [hourFormat]="'12'"></p-calendar>
                                         <label for="_date">Incident Date</label>
                                     </span>
                                 </div>
@@ -68,7 +68,7 @@
                                         <!-- <input type="text" pInputText [(ngModel)]="newsDetail" /> -->
                                         <textarea name="_newstamilshort" pInputTextarea [autoResize]="true"
                                             placeholder="max 100characters only" [(ngModel)]="newsTamilShort"
-                                            required></textarea>
+                                            required readonly></textarea>
                                         <label for="_newstamilshort">News Details(தமிழில் சுருக்கமாக )</label>
                                     </span>
                                 </div>

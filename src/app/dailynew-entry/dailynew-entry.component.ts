@@ -117,9 +117,9 @@ export class DailynewEntryComponent implements OnInit {
     var filenameWithExtn = extension;
     const filename = fileToUpload.name + '^' + folderName + '^' + filenameWithExtn;
     this.formData.append('file', fileToUpload, filename);
-    this.fileName = fileToUpload.name;
     this.http.post(this.restApiService.BASEURL + PathConstants.FileUpload_Post, this.formData)
-      .subscribe(event => {
+      .subscribe((event: any) => {
+        this.fileName = event.item2;
       }
       );
     return filenameWithExtn;
@@ -246,48 +246,27 @@ export class DailynewEntryComponent implements OnInit {
   // }
 
   onEdit(rowData: any) {
-      this.Id = rowData.g_slno,
-      this.newsTitle = rowData.g_newstitle,
-      this.newsDetail = rowData.g_details,
-      this.newsTamilTitle = rowData.g_newstitletamil,
-      this.newsTamilDetail = rowData.g_newsdetailstamil,
-      this.priority = rowData.g_priority,
-      this.priorityOptions = [{label:rowData.g_priorityname, value:rowData.g_priority}]
-      this.display = rowData.g_displayside,
-      this.displayOptions = [{label: rowData.g_displaysidename, value:rowData.g_displayside}]
-      this.location = rowData.g_location,
-      this.district = rowData.g_district;
-      this.districtOptions = [{ label: rowData.g_districtname, value: rowData.g_district}];
-      this.state = rowData.g_state,
-      this.stateOptions = [{label:rowData.g_statename, value: rowData.g_state}];
-      this.country = rowData.g_country,
-      this.countryOptions = [{label:rowData.g_countryname, value: rowData.g_country}];
-      // this.FileName = rowData.image;
-      // this.FileName = rowData.image;
-    // this._input.el.nativeElement = this.FileName;
-    // this.fileSelector.nativeElement.value = 'C:\\fakepath\\Capture.PNG';
-    // this.fileSelector.nativeElement.value = rowData.g_image;
-    // this.dailynewsForm.controls['filename']
-    // this.dailynewsForm.controls['uploadfilename'].setValue();
-    // var blob = new Blob([JSON.stringify('assets/layout/Documents' + rowData.g_image)]);
-    // var url = URL.createObjectURL(blob);
-    // this.dailynewsForm.controls['uploadfilename'].setValue(url);
+    this.Id = rowData.g_slno;
+    this.newsTitle = rowData.g_newstitle;
+    this.newsDetail = rowData.g_details;
+    this.newsTamilTitle = rowData.g_newstitletamil;
+    this.newsTamilDetail = rowData.g_newsdetailstamil;
+    this.priority = rowData.g_priority;
+    this.priorityOptions = [{ label: rowData.g_priorityname, value: rowData.g_priority }];
+    this.display = rowData.g_displayside;
+    this.displayOptions = [{ label: rowData.g_displaysidename, value: rowData.g_displayside }];
+    this.location = rowData.g_location;
+    this.district = rowData.g_district;
+    this.districtOptions = [{ label: rowData.g_districtname, value: rowData.g_district }];
+    this.state = rowData.g_state;
+    this.stateOptions = [{ label: rowData.g_statename, value: rowData.g_state }];
+    this.country = rowData.g_country;
+    this.countryOptions = [{ label: rowData.g_countryname, value: rowData.g_country }];
     this.fileName = rowData.g_image;
   }
 
   clear() {
     this.Id = 0;
-    // this.newsDetail = '';
-    // this.newsTitle = null;
-    // this.displayOptions = [];
-    // this.priorityOptions = [];
-    // this.districtOptions = [];
-    // this.stateOptions = [];
-    // this.countryOptions = [];
-    // this.location = null;
-    // this.filename = '';
-    // this.newsTamilTitle = '';
-    // this.newsTamilDetail = '';
     this.fileSelector.nativeElement.value = null;
     this.dailynewsForm.reset();
   }

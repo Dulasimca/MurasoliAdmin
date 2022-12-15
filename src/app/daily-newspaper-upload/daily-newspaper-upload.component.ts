@@ -45,7 +45,7 @@ export class DailyNewspaperUploadComponent implements OnInit {
     const filename = fileToUpload.name + '^' + folderName + '^' + filenameWithExtn;
     this.formData.append('file', fileToUpload, filename);
     this.FileName = fileToUpload.name;
-    this.http.post(this.restApiService.BASEURL + PathConstants.FileUpload_Post, this.formData)
+    this.http.post(this.restApiService.BASEURL + PathConstants.PdfUpload_Post, this.formData)
       .subscribe(event => {
       }
       );

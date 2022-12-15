@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
-                                        <input [(ngModel)]="fileName" #fileSelector id="file" name="uploadfilename" pInputText type="file"
+                                        <input #fileSelector id="file" name="uploadfilename" pInputText type="file"
                                             pInputText (change)="uploadFile($event)" accept="image/*" required />
                                         <label for="uploadfilename"></label>
                                     </span>
