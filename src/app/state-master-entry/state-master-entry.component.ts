@@ -29,7 +29,7 @@ export class StateMasterEntryComponent implements OnInit {
     //update
     if (this.Id !== 0) {
       const values = {
-        'u_stateid': this.Id,
+        'u_statecode': this.Id,
         'u_statenametamil': this.stateNameTamil,
         'u_statename': this.stateName,
         'flag': (this.selectedType == 1) ? true : false
@@ -44,7 +44,7 @@ export class StateMasterEntryComponent implements OnInit {
     else {
       //save
       const params = {
-        'stateid': this.Id,
+        'statecode': this.Id,
         'statename': this.stateName,
         'statenametamil': this.stateNameTamil,
         'Flag': (this.selectedType == 1) ? true : false
@@ -81,7 +81,7 @@ export class StateMasterEntryComponent implements OnInit {
     this.Id = rowData.g_stateid,
       this.stateName = rowData.g_statename,
       this.stateNameTamil = rowData.g_statenametamil,
-      this.selectedType = (rowData.g_flag === 'Active') ? 1 : 0;
+      this.selectedType = (rowData.flag === 'Active') ? 1 : 0;
   }
 
   onView() {
@@ -89,7 +89,7 @@ export class StateMasterEntryComponent implements OnInit {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
           res.Table.forEach((i: any) => {
-            i.flag = (i.flag === true) ? 'Active' : 'Inactive'
+            i.flag = (i.g_flag === true) ? 'Active' : 'Inactive'
            })
           this.Statedata = res.Table;
         } else {
@@ -107,8 +107,9 @@ export class StateMasterEntryComponent implements OnInit {
   }
  
   clear() {
-    this.stateName = null;
-    this.selectedType = null;
+    this.stateName = '';
+    this.stateNameTamil = '';
+    // this.selectedType = null;
   }
 
 }

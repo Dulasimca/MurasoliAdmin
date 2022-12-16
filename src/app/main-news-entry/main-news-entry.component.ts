@@ -223,10 +223,10 @@ export class MainNewsEntryComponent implements OnInit {
       if (res !== null && res !== undefined) {
         if (res.Table.length !== 0) {
           res.Table.forEach((i: any) => {
-            i.idate = this.datePipe.transform(i.g_incidentdate, 'dd-MM-yyyy')
+            i.idate = this.datePipe.transform(i.g_incidentdate, 'dd-MM-yyyy, h:mm a')
             i.url = 'assets/layout/Documents/' + i.g_image;
             i.g_priorityname = (i.g_priority === 0) ? 'Low' : (i.g_priority === 1) ? 'Medium' : (i.g_priority === 2) ? 'High' : '-';
-            i.g_displaysidename = (i.g_displayside === 0) ? 'Left' : (i.g_displayside === 1) ? 'Right' : (i.g_displayside === 2) ? 'Center' : '-';
+            i.g_displaysidename = (i.g_displayside === 0) ? 'Left' : (i.g_displayside === 1) ? 'Right' : (i.g_displayside === 2) ? 'Center' : (i.g_displayside === 3) ? 'Bottom' : '-';
           }),
             this.mainNewsdata = res.Table;
         } else {

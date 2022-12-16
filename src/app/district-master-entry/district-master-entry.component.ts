@@ -101,6 +101,7 @@ export class DistrictMasterEntryComponent implements OnInit {
     this.districtId = rowData.g_districtid;
     this.districtName = rowData.g_districtname;
     this.selectedType = rowData.g_flag;
+    this.districtTamilName = rowData.g_districtnametamil;
   }
 
   onView() {
@@ -126,5 +127,6 @@ export class DistrictMasterEntryComponent implements OnInit {
   onClear() {
     this.districtId = 0;
     this.districtName = '';
+    this.districtTamilName = '';
   }
 }

@@ -58,7 +58,7 @@
                                     <span class="p-column-title">
                                         S.No :
                                     </span>
-                                    <span style="text-align: end;">
+                                    <span style="text-align: right;">
                                         {{rowIndex+1}}
                                     </span>
                                 </td>
@@ -67,7 +67,7 @@
                                     <span class="p-column-title">
                                         State Code :
                                     </span>
-                                    <span style="text-align: end;">
+                                    <span style="text-align: right;">
                                         {{rowData.g_stateid}}
                                     </span>
                                 </td>
@@ -92,13 +92,13 @@
                                         Active/Inactive :
                                     </span>
                                     <span style="text-align: end;">
-                                        {{rowData.g_flag}}
+                                        {{rowData.flag}}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="p-column-title">
                                         Edit/Update :
-                                    </span><span><button icon="pi pi-pencil" pButton type="button"
+                                    </span><span class="div-txt-align-ct"><button icon="pi pi-pencil" pButton type="button"
                                             pTooltip="Tap to edit" (click)="onEdit(rowData)">
                                         </button></span>
                                 </td>

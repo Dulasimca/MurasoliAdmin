@@ -19,6 +19,41 @@
                                         <label for="_date">Incident Date</label>
                                     </span>
                                 </div>
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <input name="_location" type="text" pInputText [(ngModel)]="location"
+                                            required />
+                                        <label for="_location">Location</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <p-dropdown [options]="districtOptions" name="_district" [(ngModel)]="district"
+                                            (onClick)="onSelect('D')" [autoDisplayFirst]="false" [required]="true">
+                                        </p-dropdown>
+                                        <label for="_district">District</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <p-dropdown [options]="stateOptions" name="_state" [(ngModel)]="state"
+                                            (onClick)="onSelect('S')" [autoDisplayFirst]="false" [required]="true">
+                                        </p-dropdown>
+                                        <label for="_state">State</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="grid to-center">
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <p-dropdown [options]="countryOptions" name="_country" [(ngModel)]="country"
+                                            (onClick)="onSelect('C')" [autoDisplayFirst]="false" [required]="true">
+                                        </p-dropdown>
+                                        <label for="_country">Country</label>
+                                    </span>
+                                </div>
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <input type="text" name="_newstitle" pInputText [(ngModel)]="newsTitle"
@@ -44,7 +79,29 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="grid to-center">
+                            <div class="grid">
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <p-dropdown [options]="displayOptions" name="_display" [(ngModel)]="display"
+                                            [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                        <label for="_display">Display side</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <textarea name="_newsshort" pInputTextarea [(ngModel)]="newsShort"
+                                            required></textarea>
+                                        <label for="_newsshort">News Details(in short)</label>
+                                    </span>
+                                </div>
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <textarea name="_newstamilshort" pInputTextarea
+                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort" required
+                                            readonly></textarea>
+                                        <label for="_newstamilshort">News Details(தமிழில் சுருக்கமாக )</label>
+                                    </span>
+                                </div>
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <input #fileSelector id="file" name="uploadfilename" pInputText type="file"
@@ -52,80 +109,22 @@
                                         <label for="uploadfilename"></label>
                                     </span>
                                 </div>
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
-                                        <textarea name="_newsshort" pInputTextarea [autoResize]="true"
-                                            [(ngModel)]="newsShort" required></textarea>
-                                        <label for="_newsshort">News Details(in short)</label>
-                                    </span>
-                                </div>
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
-                                        <textarea name="_newstamilshort" pInputTextarea [autoResize]="true"
-                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort" required
-                                            readonly></textarea>
-                                        <label for="_newstamilshort">News Details(தமிழில் சுருக்கமாக )</label>
-                                    </span>
-                                </div>
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
-                                        <p-dropdown name="_display" [options]="displayOptions" [(ngModel)]="display"
-                                            (onClick)="onSelect('DP')" [autoDisplayFirst]="false" [required]="true">
-                                        </p-dropdown>
-                                        <label for="_display">Display side</label>
-                                    </span>
-                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="grid">
-                                <div class="col-12 md:col-2 lg:col-3">
+                                <div class="col-12 md:col-2 lg:col-6">
                                     <span class="p-float-label">
-                                        <textarea name="_newsdetails" pInputTextarea [autoResize]="true"
-                                            [(ngModel)]="newsDetail" required></textarea>
+                                        <textarea name="_newsdetails" pInputTextarea rows="3" [(ngModel)]="newsDetail"
+                                            required></textarea>
                                         <label for="_newsdetails">News Details</label>
                                     </span>
                                 </div>
-                                <div class="col-12 md:col-2 lg:col-3">
+                                <div class="col-12 md:col-2 lg:col-6">
                                     <span class="p-float-label">
-                                        <textarea name="_newstamildetails" pInputTextarea [autoResize]="true"
+                                        <textarea name="_newstamildetails" pInputTextarea rows="3"
                                             [(ngModel)]="newsTamilDetail" required></textarea>
                                         <label for="_newstamildetails">News Details(Tamil)</label>
-                                    </span>
-                                </div>
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
-                                        <input name="_location" type="text" pInputText [(ngModel)]="location"
-                                            required />
-                                        <label for="_location">Location</label>
-                                    </span>
-                                </div>
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
-                                        <p-dropdown [options]="districtOptions" name="_district" [(ngModel)]="district"
-                                            (onClick)="onSelect('D')" [autoDisplayFirst]="false" [required]="true">
-                                        </p-dropdown>
-                                        <label for="_district">District</label>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="grid">
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
-                                        <p-dropdown [options]="stateOptions" name="_state" [(ngModel)]="state"
-                                            (onClick)="onSelect('S')" [autoDisplayFirst]="false" [required]="true">
-                                        </p-dropdown>
-                                        <label for="_state">State</label>
-                                    </span>
-                                </div>
-                                <div class="col-12 md:col-2 lg:col-3">
-                                    <span class="p-float-label">
-                                        <p-dropdown [options]="countryOptions" name="_country" [(ngModel)]="country"
-                                            (onClick)="onSelect('C')" [autoDisplayFirst]="false" [required]="true">
-                                        </p-dropdown>
-                                        <label for="_country">Country</label>
                                     </span>
                                 </div>
                             </div>

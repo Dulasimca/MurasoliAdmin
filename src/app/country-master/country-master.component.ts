@@ -32,7 +32,7 @@ export class CountryMasterComponent implements OnInit {
         'u_countrycode': this.countryId,
         'u_countrynametamil': this.countryNameTamil,
         'u_countryname': this.countryName,
-        'flag': (this.selectedType == 1) ? true : false
+        'u_flag': (this.selectedType == 1) ? true : false
       }
       this.restApiService.post(PathConstants.UpdateCountryMaster_Update, values).subscribe(res => {
         if (res) {
