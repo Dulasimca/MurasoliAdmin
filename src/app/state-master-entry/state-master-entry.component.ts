@@ -23,6 +23,7 @@ export class StateMasterEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.onView();
+   
   }
 
   onSave() {
