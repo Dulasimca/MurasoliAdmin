@@ -39,6 +39,7 @@ import { DatePipe } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DailyNewspaperUploadComponent } from './daily-newspaper-upload/daily-newspaper-upload.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { DailyNewspaperUploadComponent } from './daily-newspaper-upload/daily-ne
     DialogModule,
     FlexLayoutModule,
     OverlayPanelModule,
+    NgxEditorModule
 
   ],
   providers: [MessageService, RestAPIService, DatePipe],
