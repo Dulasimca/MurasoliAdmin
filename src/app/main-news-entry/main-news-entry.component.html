@@ -54,18 +54,18 @@
                                         <label for="_country">Country</label>
                                     </span>
                                 </div>
-                                <div class="col-10 md:col-2 lg:col-3">
+                                <!-- <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <input type="text" name="_newstitle" pInputText [(ngModel)]="newsTitle"
                                             required />
                                         <label for="_newstitle">News Topic</label>
                                     </span>
-                                </div>
+                                </div> -->
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <input type="text" name="_newstamiltitle" pInputText
                                             [(ngModel)]="newsTamilTitle" required />
-                                        <label for="_newstamiltitle">News Topic(Tamil)</label>
+                                        <label for="_newstamiltitle">News Topic(தமிழில்)</label>
                                     </span>
                                 </div>
                                 <div class="col-10 md:col-2 lg:col-3">
@@ -76,10 +76,6 @@
                                         <label for="_priority">Priority Level</label>
                                     </span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="grid">
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-dropdown [options]="displayOptions" name="_display" [(ngModel)]="display"
@@ -87,25 +83,30 @@
                                         <label for="_display">Display side</label>
                                     </span>
                                 </div>
-                                <div class="col-12 md:col-2 lg:col-3">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="grid">
+                                 
+                                <!-- <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <textarea name="_newsshort" pInputTextarea [(ngModel)]="newsShort"
                                             required></textarea>
                                         <label for="_newsshort">News Details(in short)</label>
                                     </span>
-                                </div>
-                                <div class="col-12 md:col-2 lg:col-3">
+                                </div> -->
+                                <div class="col-12 md:col-2 lg:col-6">
                                     <span class="p-float-label">
                                         <textarea name="_newstamilshort" pInputTextarea
-                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort" required
+                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort" [autoResize]="true" required
                                             readonly></textarea>
-                                        <label for="_newstamilshort">News Details(தமிழில் சுருக்கமாக )</label>
+                                        <label for="_newstamilshort">News Short(தமிழில் சுருக்கமாக )</label>
                                     </span>
                                 </div>
                                 <div class="col-10 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <input #fileSelector id="file" name="uploadfilename" pInputText type="file"
-                                            pInputText (change)="uploadFile($event)" accept="image/*" required />
+                                            pInputText (change)="uploadFile($event)" accept=".png, .jpeg, .jpg" required />
                                         <label for="uploadfilename"></label>
                                     </span>
                                 </div>
@@ -113,19 +114,25 @@
                         </div>
                         <div class="col-12">
                             <div class="grid">
-                                <div class="col-12 md:col-2 lg:col-6">
+                                <!-- <div class="col-12 md:col-2 lg:col-6">
                                     <span class="p-float-label">
                                         <textarea name="_newsdetails" pInputTextarea rows="3" [(ngModel)]="newsDetail"
                                             required></textarea>
                                         <label for="_newsdetails">News Details</label>
                                     </span>
+                                </div> -->
+                                <div class="col-12 md:col-2 lg:col-12">
+                                    <!-- <span class="p-float-label"> -->
+                                        <!-- <label for="_newstamildetails">News Details(தமிழில்)</label> -->
+                                        <div class="editor">
+                                        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                                        </ngx-editor-menu>
+                                        <ngx-editor  name="_newstamildetails" [editor]="editor"  [(ngModel)]="newsTamilDetail" placeholder="News Details(தமிழில்)">
+                                        </ngx-editor>
+                                        <!-- <textarea name="_newstamildetails" pInputTextarea rows="5"
+                                            [(ngModel)]="newsTamilDetail" [autoResize]="true" required></textarea> -->
+                                    <!-- </span> -->
                                 </div>
-                                <div class="col-12 md:col-2 lg:col-6">
-                                    <span class="p-float-label">
-                                        <textarea name="_newstamildetails" pInputTextarea rows="3"
-                                            [(ngModel)]="newsTamilDetail" required></textarea>
-                                        <label for="_newstamildetails">News Details(Tamil)</label>
-                                    </span>
                                 </div>
                             </div>
                         </div>

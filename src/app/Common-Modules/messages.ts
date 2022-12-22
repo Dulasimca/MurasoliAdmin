@@ -18,7 +18,8 @@ export class ResponseMessage {
     public static readonly ErrorMessage = 'Please Contact Administrator!';
     public static readonly WarningMessage = 'Please try after sometime!';
     public static readonly NoRecordMessage = 'No Record Found!';
-    public static readonly NoRecForCombination = 'No Record for this combination!'
-    public static readonly UpdateMsg = 'Updated Successfully!'
-    public static readonly LoginFailed = 'Login failed!! Please enter valid credentails!'
+    public static readonly NoRecForCombination = 'No Record for this combination!';
+    public static readonly UpdateMsg = 'Updated Successfully!';
+    public static readonly LoginFailed = 'Login failed!! Please enter valid credentails!';
+    public static readonly ImageFormatErr = 'Please upload only .png or .jpg or .jpeg format images';
 }
