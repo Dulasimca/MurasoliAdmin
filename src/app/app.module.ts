@@ -39,6 +39,7 @@ import { DatePipe } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DailyNewspaperUploadComponent } from './daily-newspaper-upload/daily-newspaper-upload.component';
+import { ReporterRegistrationComponent } from './Reporter-Modules/reporter-registration/reporter-registration.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { DailyNewspaperUploadComponent } from './daily-newspaper-upload/daily-ne
     StateMasterEntryComponent,
     CountryMasterComponent,
     MenuComponent,
-    DailyNewspaperUploadComponent
+    DailyNewspaperUploadComponent,
+    ReporterRegistrationComponent
   ],
   imports: [
     BrowserModule,

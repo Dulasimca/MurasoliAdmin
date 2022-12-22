@@ -9,6 +9,7 @@ import { FlashNewsEntryComponent } from './flash-news-entry/flash-news-entry.com
 import { LoginComponent } from './login/login.component';
 import { MainNewsEntryComponent } from './main-news-entry/main-news-entry.component';
 import { MenuComponent } from './menu/menu.component';
+import { ReporterRegistrationComponent } from './Reporter-Modules/reporter-registration/reporter-registration.component';
 import { AuthGuard } from './Services/authguard';
 import { StateMasterEntryComponent } from './state-master-entry/state-master-entry.component';
 import { UserMasterComponent } from './user-master/user-master.component';
@@ -26,6 +27,8 @@ const routes: Routes = [
   {path: 'menu', component:MenuComponent},
   {path: 'newspaper-upload', component:DailyNewspaperUploadComponent, canActivate:[AuthGuard]},
   {path: 'dashboard', component:DashboardComponent, canActivate:[AuthGuard]},
+  {path: 'reporter_registration', component:ReporterRegistrationComponent, canActivate:[AuthGuard]},
+
 ];
 
 @NgModule({
