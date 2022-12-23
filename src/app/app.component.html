@@ -1,9 +1,9 @@
-<div class="col-12 md:col-12 lg:col-12" style="background: white !important;  border: 2px solid #18181826;
+<div class="col-12 md:col-12 lg:col-12" style="background:rgb(0 0 0) !important;  border: 2px solid #18181826;
     border-radius: 5px; height:-webkit-fill-available; position: absolute;
     padding: 0;">
     <app-header></app-header>
-    <div class="col-12 md:col-12 lg:col-12 no-pad"
-        style="height: inherit; overflow-y: scroll; position: absolute; overflow-x: hidden;">
+    <div class="col-12 md:col-12 lg:col-12 no-pad" [ngStyle]="styleOne ? {'background-color': 'black', 'height': 'inherit', 'overflow-y': 'scroll' , 'overflow-x': 'hidden'} : {'background-color': 'black'}"
+      >
         <!-- <div class="col-12 md:col-12 lg:col-12 no-pad" style="height: 100%"> -->
             <div class="grid" style="height: inherit;">
                 <div *ngIf="hideMenu" class="col-2 md:col-2 lg:col-2 no-pad-btm">
