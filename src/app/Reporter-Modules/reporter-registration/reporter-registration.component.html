@@ -1,1 +1,238 @@
-<p>reporter-registration works!</p>
+ 
+<div class="col-12 md:col-12 lg:col-12">
+    <div class="grid to-center">
+        <div class="col-11 md:col-10 lg:col-10 box-shadow no-pad">
+            <div #main class="col-12 form-border">
+                <div class="col-12 header">
+                    <span>Reporter Registration</span>
+                </div>
+                <p-toast position="bottom-center" key="t-msg"></p-toast>
+                <!-- <form #f="ngForm" name="reporterRegForm"> -->
+                <div #outerdiv class="col-12">
+                    <div #row1 class="col-12">
+                        <div class="col-12"></div>
+                        <div class="grid to-center">
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="name" />
+                                    <label for="float-input">Name</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input name="_mailid" type="text"  [(ngModel)]="mailId" pInputText>
+                                    <label for="float-input">e-mail ID</label>      
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="address" />
+                                    <label for="float-input">Address</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="stateOptions" name="_state" [(ngModel)]="state"
+                                        (onClick)="onSelect('S')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                    <label for="_state">State</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div #row2 class="col-12">
+                        <div class="col-12"></div>
+                            <div class="grid to-center">
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="districtOptions" name="_district" [(ngModel)]="district"
+                                        (onClick)="onSelect('D')" [autoDisplayFirst]="false" [required]="true">
+                                    </p-dropdown>
+                                    <label for="_district">District</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="city" />
+                                    <label for="float-input">City</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="landMark"/>
+                                    <label for="float-input">Landmark</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" pInputText [(ngModel)]="pinCode" />
+                                    <label for="float-input">Pincode</label>
+                                </span>
+                            </div>
+                        </div>
+                        </div>
+                        <div #row3 class="col-12">
+                        <div class="col-12"></div>
+                            <div class="grid">
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-calendar [(ngModel)]="dob" [readonlyInput]="true" [showIcon]="true"
+                                        [autoZIndex]="true"></p-calendar>
+                                    <label for="float-input">DOB</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="genderOptions" name="_gender" [(ngModel)]="gender"
+                                         [autoDisplayFirst]="false" [required]="true">
+                                    </p-dropdown>
+                                    <label for="_gender">Gender</label>
+                                </span>
+                            </div>
+                            <div class="col-12 md:col-2 lg:col-3">
+                                <span class="p-float-label">
+                                    <input type="text" maxlength="10" pInputText [(ngModel)]="phnNum" />
+                                    <label for="float-input">Phone Number</label>
+                                </span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>  
+                <!-- </form> -->
+                <div class="col-12 div-txt-align-ct">
+                    <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"
+                        [disabled]="(!name || !mailId || !address || !state || !district || !city || !landMark
+                        || !pinCode || !dob || !gender || !phnNum)"></button>
+                </div>
+                <div class="col-12" style="margin-bottom: 2%">
+                    <p-table [value]="reporterData" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="40"
+                        [rowsPerPageOptions]="[10,20,30,40]" responsiveLayout="scroll">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width: 50px;">S.No</th>
+                                <th>Name</th>   
+                                <th>Mail ID</th>   
+                                <th>DOB</th>   
+                                <th>Gender</th>   
+                                <th>Phone Number</th>   
+                                <th>Address</th>   
+                                <th>State</th>
+                                <th>District</th>   
+                                <th>City</th>
+                                <th>Pincode</th>
+                                <th>Landmark</th>
+                                <th>Edit</th>                                
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                            <tr class="tr-border">
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        S.No :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowIndex+1}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Name :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_name}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Mail ID :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_mailid}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        DOB :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_date}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Gender :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_genderName}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Phone Number :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_phonenumber}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Address :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_address}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        State :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_statename}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        District :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_districtname}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        City :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_city}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Pincode :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_pincode}}
+                                    </span>
+                                </td>
+                                <td class="td-border">
+                                    <span class="p-column-title">
+                                        Landmark :
+                                    </span>
+                                    <span style="text-align: end;">
+                                        {{rowData.g_landmark}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">
+                                        Edit/Update :
+                                    </span><span><button icon="pi pi-pencil" pButton type="button"
+                                            pTooltip="Tap to edit" (click)="onEdit(rowData)">
+                                        </button></span>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

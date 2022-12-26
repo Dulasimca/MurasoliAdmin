@@ -24,7 +24,11 @@ export class PathConstants {
     public static readonly DailyNewsPaper_Post = 'DailyNewsPaper/AddDailynewspaper';
     public static readonly DailyNewsPaper_Get = 'DailyNewsPaper/GetDailyNewsPaper';
     public static readonly UpdateDailyNewsPaper_Get = 'UpdateDailyNewsPaper/UpdateDailyNewsPaper';
-    public static readonly PdfUpload_Post = 'PdfUpload'
+    public static readonly PdfUpload_Post = 'PdfUpload';
+
+    public static readonly ReporterRegistration_Post = 'ReporterRegistration/AddReporterRegistration';
+    public static readonly ReporterRegistration_Get = 'ReporterRegistration/GetReporterRegistration';
+    public static readonly UpdateReporterRegistration_Update = 'UpdateReporterRegistration/UpdateReporterRegistration';
 
 
 
