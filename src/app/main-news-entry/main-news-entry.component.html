@@ -79,6 +79,7 @@
                                 <div class="col-12 md:col-2 lg:col-3">
                                     <span class="p-float-label">
                                         <p-dropdown [options]="displayOptions" name="_display" [(ngModel)]="display"
+                                        (onClick)="onSelect('DP')"
                                             [autoDisplayFirst]="false" [required]="true"></p-dropdown>
                                         <label for="_display">Display side</label>
                                     </span>
@@ -95,11 +96,11 @@
                                         <label for="_newsshort">News Details(in short)</label>
                                     </span>
                                 </div> -->
+                                 
                                 <div class="col-12 md:col-2 lg:col-6">
                                     <span class="p-float-label">
                                         <textarea name="_newstamilshort" pInputTextarea
-                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort" [autoResize]="true" required
-                                            readonly></textarea>
+                                            placeholder="max 100characters only" [(ngModel)]="newsTamilShort" [autoResize]="true" required></textarea>
                                         <label for="_newstamilshort">News Short(தமிழில் சுருக்கமாக )</label>
                                     </span>
                                 </div>
