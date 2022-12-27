@@ -26,21 +26,28 @@
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input type="text" pInputText [(ngModel)]="address" />
-                                    <label for="float-input">Address</label>
+                                    <p-calendar [(ngModel)]="dob" [readonlyInput]="true" [showIcon]="true"
+                                      [autoZIndex]="true"></p-calendar>
+                                    <label for="float-input">DOB</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <p-dropdown [options]="stateOptions" name="_state" [(ngModel)]="state"
-                                        (onClick)="onSelect('S')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
-                                    <label for="_state">State</label>
+                                    <input type="text" pInputText [(ngModel)]="address" />
+                                    <label for="float-input">Address</label>
                                 </span>
-                            </div>
+                            </div>                       
                         </div>
                         <div #row2 class="col-12">
                         <div class="col-12"></div>
-                            <div class="grid to-center">
+                            <div class="grid">
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <p-dropdown [options]="stateOptions" name="_state" [(ngModel)]="state"
+                                            (onClick)="onSelect('S')" [autoDisplayFirst]="false" [required]="true"></p-dropdown>
+                                        <label for="_state">State</label>
+                                    </span>
+                                </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-dropdown [options]="districtOptions" name="_district" [(ngModel)]="district"
@@ -52,7 +59,7 @@
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <input type="text" pInputText [(ngModel)]="city" />
-                                    <label for="float-input">City</label>
+                                    <label for="float-input">Area</label>
                                 </span>
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
@@ -60,29 +67,22 @@
                                     <input type="text" pInputText [(ngModel)]="landMark"/>
                                     <label for="float-input">Landmark</label>
                                 </span>
-                            </div>
-                            <div class="col-12 md:col-2 lg:col-3">
-                                <span class="p-float-label">
-                                    <input type="text" pInputText [(ngModel)]="pinCode" />
-                                    <label for="float-input">Pincode</label>
-                                </span>
-                            </div>
+                            </div>                       
                         </div>
                         </div>
                         <div #row3 class="col-12">
                         <div class="col-12"></div>
                             <div class="grid">
-                            <div class="col-12 md:col-2 lg:col-3">
-                                <span class="p-float-label">
-                                    <p-calendar [(ngModel)]="dob" [readonlyInput]="true" [showIcon]="true"
-                                        [autoZIndex]="true"></p-calendar>
-                                    <label for="float-input">DOB</label>
-                                </span>
-                            </div>
+                                <div class="col-12 md:col-2 lg:col-3">
+                                    <span class="p-float-label">
+                                        <input type="text" pInputText [(ngModel)]="pinCode" />
+                                        <label for="float-input">Pincode</label>
+                                    </span>
+                                </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
                                     <p-dropdown [options]="genderOptions" name="_gender" [(ngModel)]="gender"
-                                         [autoDisplayFirst]="false" [required]="true">
+                                        (onClick)="onSelect('G')" [autoDisplayFirst]="false" [required]="true">
                                     </p-dropdown>
                                     <label for="_gender">Gender</label>
                                 </span>

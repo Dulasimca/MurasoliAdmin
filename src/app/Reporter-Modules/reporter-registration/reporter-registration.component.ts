@@ -40,11 +40,6 @@ export class ReporterRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMasterData();
-    this.genderOptions = [
-      { label: 'Male', value: 1},
-      { label: 'Female', value: 2},
-      { label: 'Transgender', value: 3}
-    ]
     this.onView();
   }
 
@@ -74,6 +69,13 @@ export class ReporterRegistrationComponent implements OnInit {
         })
         this.stateOptions = stateSelection;
         //this.stateOptions.unshift({ label: '-select-', value: null });
+        break;
+        case 'G':
+          this.genderOptions = [
+            { label: 'Male', value: 1},
+            { label: 'Female', value: 2},
+            { label: 'Transgender', value: 3}
+          ]
         break;
     }
   }
