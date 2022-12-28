@@ -18,6 +18,10 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MenuModule} from 'primeng/menu';
 import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+
+
 
 
 import { AppComponent } from './app.component';
@@ -41,6 +45,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DailyNewspaperUploadComponent } from './daily-newspaper-upload/daily-newspaper-upload.component';
 import { ReporterRegistrationComponent } from './Reporter-Modules/reporter-registration/reporter-registration.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { ReporterregApprovalComponent } from './Reporter-Modules/reporterreg-approval/reporterreg-approval.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +62,8 @@ import { NgxEditorModule } from 'ngx-editor';
     CountryMasterComponent,
     MenuComponent,
     DailyNewspaperUploadComponent,
-    ReporterRegistrationComponent
+    ReporterRegistrationComponent,
+    ReporterregApprovalComponent
   ],
   imports: [
     BrowserModule,
@@ -82,10 +88,11 @@ import { NgxEditorModule } from 'ngx-editor';
     DialogModule,
     FlexLayoutModule,
     OverlayPanelModule,
-    NgxEditorModule
+    NgxEditorModule,
+    ConfirmDialogModule
 
   ],
-  providers: [MessageService, RestAPIService, DatePipe],
+  providers: [MessageService, RestAPIService, DatePipe, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

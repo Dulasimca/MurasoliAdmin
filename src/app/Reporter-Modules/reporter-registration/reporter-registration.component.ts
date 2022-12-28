@@ -95,6 +95,7 @@ export class ReporterRegistrationComponent implements OnInit {
         'city': this.city,
         'pincode': this.pinCode,
         'landmark': this.landMark,
+        'approvalstatus': 0,
         'flag': true
       }
       this.restApiService.post(PathConstants.ReporterRegistration_Post, params).subscribe((res: any) => {
@@ -160,6 +161,7 @@ export class ReporterRegistrationComponent implements OnInit {
           res.Table.forEach((i: any) => {
             i.g_date = this.datePipe.transform(i.g_dob, 'dd-MM-yyyy, h:mm a')
             i.g_genderName = (i.g_gender === 1) ? 'Male' : (i.g_gender === 2) ? 'Female' : 'Transgender';
+            i.g_approvalstatus = (i.g_approvalstatus === 1) ? 'Approved' : 'Rejected';
           })
           this.reporterData = res.Table
         }  else {

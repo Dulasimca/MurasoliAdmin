@@ -30,7 +30,9 @@ export class PathConstants {
     public static readonly ReporterRegistration_Get = 'ReporterRegistration/GetReporterRegistration';
     public static readonly UpdateReporterRegistration_Update = 'UpdateReporterRegistration/UpdateReporterRegistration';
 
+    public static readonly UpdateReporterRegBySlno_Update = 'UpdateReporterRegBySlno/UpdateReporterRegBySlno';
+
+
 
 
 }
-     

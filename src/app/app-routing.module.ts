@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { MainNewsEntryComponent } from './main-news-entry/main-news-entry.component';
 import { MenuComponent } from './menu/menu.component';
 import { ReporterRegistrationComponent } from './Reporter-Modules/reporter-registration/reporter-registration.component';
+import { ReporterregApprovalComponent } from './Reporter-Modules/reporterreg-approval/reporterreg-approval.component';
 import { AuthGuard } from './Services/authguard';
 import { StateMasterEntryComponent } from './state-master-entry/state-master-entry.component';
 import { UserMasterComponent } from './user-master/user-master.component';
@@ -28,6 +29,8 @@ const routes: Routes = [
   {path: 'newspaper-upload', component:DailyNewspaperUploadComponent, canActivate:[AuthGuard]},
   {path: 'dashboard', component:DashboardComponent, canActivate:[AuthGuard]},
   {path: 'reporter_registration', component:ReporterRegistrationComponent, canActivate:[AuthGuard]},
+  {path: 'reporterreg_approval', component:ReporterregApprovalComponent, canActivate:[AuthGuard]},
+
 
 ];
 

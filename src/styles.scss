@@ -40,7 +40,7 @@ body {
     // border: 2px solid #181818b8;
     border-radius: 5px;
     padding: 0 !important;
-    background-color: burlywood;
+    background-color: rgb(45, 44, 43);
 
 }
 
@@ -69,7 +69,7 @@ background:rgb(0 0 0)
 ///primeng
 
 .p-button {
-    background: #272929e3 !important;
+    background: #EF210AE3 !important;
     border: .5px solid #6a6767 !important;
     transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s;
     border-radius: 15px ;
@@ -221,7 +221,7 @@ background: #ffec26fa;
  .menu-sidebar {
     // position: absolute;
     overflow-y: auto;
-    background-color: #000000;
+    background-color: rgb(176 9 9);
     box-shadow: 0 2px 12px 0 rgb(0 0 0 / 6%);
     padding: 0 !important;
     overflow-x: hidden;
@@ -260,6 +260,43 @@ background: #ffec26fa;
     justify-content: center;
     color: #3c4962;
 }
+
+.status-icon-green {
+    color: #1bd521;
+}
+
+.status-icon-red {
+    color: #f00a0a;
+}
+
+.p-inputtext {
+
+    width: -webkit-fill-available !important;
+
+    border: 1px solid #1a9967 !important;
+
+    background: white !important;
+
+    color: #292828c7 !important;
+
+    font-size: 14px !important;
+
+}
+
+.p-dropdown {
+
+    width: -webkit-fill-available !important;
+
+    border: 1px solid #1a9967 !important;
+
+    background: white !important;
+
+    color: #292828c7 !important;
+
+    font-size: 14px !important;
+
+}
+
 // :host ::ng-deep {
 // .p-toast-message-custom {
 //     background-color: #8A427A;
