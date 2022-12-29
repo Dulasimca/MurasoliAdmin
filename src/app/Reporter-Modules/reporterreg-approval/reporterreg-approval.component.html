@@ -6,7 +6,7 @@
                 <div class="col-12 header">
                     <span>Reporter Approval</span>
                 </div>
-                <p-toast position="bottom-center" key="t-msg"></p-toast>
+                <p-toast position="center" key="t-msg"></p-toast>
                 <!-- <form #f="ngForm" name="reporterRegForm"> -->
                 <!-- <div class="col-12 div-txt-align-ct">
                     <button pButton type="button" icon="pi pi-fw pi-save" label="Save" (click)="onSave()"
@@ -136,7 +136,7 @@
                                 <span class="p-column-title">
                                     Approval Status :
                                 </span>
-                                <button label="Accept" *ngIf="(rowData.disableApprove)" (click)="selectForApproval(rowData)"pButton type="button" [disabled]="!disableApprove">
+                                <button label="Accept"  (click)="selectForApproval(rowData)"pButton type="button" [disabled]="(rowData.hideApprove)">
                                 </button>
                                 <span *ngIf="(rowData.tEnableTick)">
                                     <i class="status-icon-green pi pi-check">Accepted</i></span>

@@ -21,6 +21,7 @@ export class ReporterregApprovalComponent implements OnInit {
   disableApprove: boolean = false;
   disableReject: boolean = false;
   showDialog: boolean = false;
+  hideApprove: boolean = true;
   
   constructor(private restApiService: RestAPIService, private datePipe: DatePipe,  private messageService: MessageService, private _confirmationService: ConfirmationService) { }
 
@@ -35,7 +36,10 @@ export class ReporterregApprovalComponent implements OnInit {
           res.Table.forEach((i: any) => {
             i.g_date = this.datePipe.transform(i.g_dob, 'dd-MM-yyyy, h:mm a')
             i.g_genderName = (i.g_gender === 1) ? 'Male' : (i.g_gender === 2) ? 'Female' : 'Transgender';
-            i.disableApprove = (i.g_approvalstatus === 2) ? true : false;
+            // i.disableApprove = (i.g_approvalstatus === 2) ? true : false;
+            i.hideApprove = (i.g_approvalstatus === 0) ? false : true;
+            console.log(i.disableApprove)
+            // i.approve = (i.g_approvalstatus === 0) ? true : false;
             i.tEnableTick =  (i.g_approvalstatus === 1) ? true : false;
             i.disableReject = (i.g_approvalstatus !== 2) ? true : false;
             i.tCrossTick =  (i.g_approvalstatus === 2) ? true : false;
