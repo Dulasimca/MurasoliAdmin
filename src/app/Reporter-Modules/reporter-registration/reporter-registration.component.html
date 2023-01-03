@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-12 md:col-2 lg:col-3">
                                 <span class="p-float-label">
-                                    <input name="_mailid" type="text"  [(ngModel)]="mailId" pInputText>
+                                    <input name="_mailid" type="text" (change)="emailValidationCheck()" [(ngModel)]="mailId" pInputText>
                                     <label for="float-input">e-mail ID</label>      
                                 </span>
                             </div>

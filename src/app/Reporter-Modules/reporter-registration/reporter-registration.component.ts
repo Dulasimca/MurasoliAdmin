@@ -209,4 +209,38 @@ export class ReporterRegistrationComponent implements OnInit {
     this.gender = null;
     this.phnNum = null;
   }
+
+  //checking existing mailid
+  emailValidationCheck() {
+    if (this.mailId !== undefined && this.mailId !== null && this.mailId.trim() !== '') {
+      const entered_email: string = this.mailId.trim();
+      const substr = entered_email.split('@');
+      if (substr !== undefined && substr.length > 1) {
+        const last_str = substr[1].split('.');
+        if (last_str !== undefined && last_str.length > 1) {
+          if (last_str[1].toLowerCase() === 'com' || last_str[1].toLowerCase() === 'in') {
+          } else {
+            this.messageService.clear();
+            this.messageService.add({
+              key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
+              summary: ResponseMessage.SUMMARY_WARNING, detail: 'Enter valid email address'
+            })    
+          }
+        } else {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
+            summary: ResponseMessage.SUMMARY_WARNING, detail: 'Enter valid email address'
+          })      
+        }
+      }else {
+        this.mailId = null;
+        this.messageService.clear();
+        this.messageService.add({
+          key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
+          summary: ResponseMessage.SUMMARY_WARNING, detail: 'Enter valid email address'
+        })    
+      }
+    }
+  }
 }

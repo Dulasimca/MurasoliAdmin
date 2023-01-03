@@ -111,4 +111,38 @@ export class UserMasterComponent implements OnInit {
     this.password = null;
     
   }
+
+   //checking existing mailid
+   emailValidationCheck() {
+    if (this.email !== undefined && this.email !== null && this.email.trim() !== '') {
+      const entered_email: string = this.email.trim();
+      const substr = entered_email.split('@');
+      if (substr !== undefined && substr.length > 1) {
+        const last_str = substr[1].split('.');
+        if (last_str !== undefined && last_str.length > 1) {
+          if (last_str[1].toLowerCase() === 'com' || last_str[1].toLowerCase() === 'in') {
+          } else {
+            this.messageService.clear();
+            this.messageService.add({
+              key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
+              summary: ResponseMessage.SUMMARY_WARNING, detail: 'Enter valid email address'
+            })    
+          }
+        } else {
+          this.messageService.clear();
+          this.messageService.add({
+            key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
+            summary: ResponseMessage.SUMMARY_WARNING, detail: 'Enter valid email address'
+          })      
+        }
+      }else {
+        this.email = null;
+        this.messageService.clear();
+        this.messageService.add({
+          key: 't-msg', severity: ResponseMessage.SEVERITY_WARNING,
+          summary: ResponseMessage.SUMMARY_WARNING, detail: 'Enter valid email address'
+        })    
+      }
+    }
+  }
 }
